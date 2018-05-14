@@ -1,0 +1,836 @@
+\documentclass{scrartcl}
+\usepackage{selinput}
+\SelectInputMappings{
+  adieresis={ä},
+  germandbls={ß},
+}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+
+\setcounter{MaxMatrixCols}{20}
+
+\everymath{\displaystyle}
+
+\begin{document}
+
+\subject{Skriptum}
+\title{Algebra I}
+\subtitle{SS 2018}
+\date{\today}
+\maketitle
+
+\tableofcontents
+
+\section{Vektorräume}
+\label{sec:vektorraeume}
+
+\paragraph{Definition 1.1}
+Sei $K$ ein Körper. Eine Menge $V$ heißt \textit{Vektorraum} über K wenn sie mit
+folgenden Strukturen ausgestattet ist:
+\begin{itemize}
+\item $+ : V \times V \to V $ (Addition)
+\item $\cdot~: K \times V \to V $ (Skalarenmultiplikation)
+\end{itemize}
+Mit folgenden Eigenschaften: \\
+$\forall u,v,w \in V~\forall \lambda, \mu \in K :$
+\begin{itemize}
+\item $u + v = v + u$ (Kommutativität der Addition)
+\item $(u + v) + w = u + (v + w)$ (Assoziativität der Addition)
+\item $\exists 0 \in V: v + 0 = v$ (Neutrales Element der Addition)
+\item $\exists v' \in V: v + v' = 0$ (Additives Inverses)
+\item $\exists 1 \in K: 1 \cdot v = v$ (Neutrales Element der
+  Skalarenmultiplikation) 
+\item $(\lambda \cdot \mu) \cdot v = \lambda \cdot (\mu \cdot v)$
+  (Assoziativität der Skalarenmultiplikation)
+\item $\lambda \cdot (u + v) = \lambda \cdot u + \lambda \cdot v$
+  (Distributivität I)
+\item $v \cdot (\lambda + \mu) = v \cdot \lambda + v \cdot \mu$
+  (Distributivität II)
+\end{itemize}
+
+\paragraph{Bemerkung 1.2}
+Elemente von $V$ nennt man Vektoren. Elemente von $K$ nennnt man Skalare.
+Außerdem ist das Nullelement eindeutig.
+~\\\\
+Im folgenden sei $K$ ein Körper und $V$ ein Vektorraum über $K$.
+\paragraph{Definition 1.3}
+$x_1, \dots x_n \in V$ heißen \textit{linear unabhängig}, wenn
+$\exists \lambda_1, \dots, \lambda_n \in K$ und nicht alle gleich null sind,
+sodass $\lambda_1x_1 + \dots + \lambda_nx_n = 0$.
+
+\subsection{Basis und Dimension}
+\label{subsec:basisunddimension}
+
+\paragraph{Definition 1.4}
+\begin{itemize}
+\item Ein $V$ Vektorraum heißt \textit{endlichdimensional}, wenn $\exists N \in
+\mathbb{Z}_{\geq0}$, sodass $\forall n > N$ und beliebige $v_1, \dots, v_n \in
+V$ linear abhängig sind.
+\item Kleinste solche $N$ nenne \textit{Dimension} von $V$.
+\end{itemize}
+
+\paragraph{Definition 1.5}
+$v_1, \dots v_n \in V$ heißen \textit{Basis}, wenn
+\begin{itemize}
+\item linear unabhängig
+\item $\forall u \in V \exists$ eindeutige $\lambda_1, \dots, \lambda_n \in K$,
+  sodass $u = \lambda_1v_1 + \dots + \lambda_nv_n$
+\end{itemize}
+
+\paragraph{Lemma 1.6}
+Sei $V$ ein $K$ Vektorraum mit $dimV = N$
+\begin{enumerate}
+\item $\exists$ Basis mit $N$ Elementen.
+\item Jede Basis hat $N$ Elemente.
+\end{enumerate}
+\textit{Beweis} 1. klar 2. ohne Beweis. 
+
+\subsection{Lineare Abbildungen}
+\label{subsec:lineareabbildungen}
+
+\paragraph{Definition 1.7}
+Sei $V,W$ Vektorräume über $K$. $f: V \to W$ heißt \textit{Lineare Abbildung}
+gdw.
+\begin{itemize}
+\item $\forall u,v \in V: f(v + u) = f(v) + f(u)$
+\item $\forall \lambda \in K \forall v \in V: f(\lambda v) = \lambda f(v)$
+\end{itemize}
+
+\section{Matrizen}
+\label{sec:matrizen}
+
+\paragraph{Definition 2.1} Sei $K$ ein Körper. Eine $m \times n$ Matrix über $K$
+(oder mit Einträgen in $K$) ist eine Tabelle:
+\[
+  A = \begin{pmatrix}
+      a_{11} & \dots & a_{1n} \\
+      \vdots & \ddots & \vdots \\
+      a_{m1} & \dots & a_{mn}
+    \end{pmatrix} = \left( a_{ij} \right) ~~ a_{ij} \in K
+\]
+
+\subsection{Operationen mit Matrizen}
+\label{subsec:operationenmitmatrizen}
+
+Sei im folgenden $A = (a_{ij}), B = (b_{ij}) \in Mat_{m,n}(K)$.
+\begin{itemize}
+\item $A + B = a_{ij} + b_{ij}$ (Addition)
+\item $\lambda \in K: \lambda \cdot A = (\lambda \cdot a_{ij})$
+  (Skalarenmultiplikation)
+\item $C = (c_{ij}) \in Mat_{m,r}(K): A \cdot C = \left(
+    \sum_{s=1}^{n}a_{is}c_{si} \right) \in Mat_{m,r}(K)$
+  (Matrizenmultiplikation)
+\item Transposition: $A^t := (a_{ji})$
+\item Determinante: $det(A) = \sum_{i_1, \dots, i_n}(-1)^{inv(i_1, \dots,
+    i_n)}a_{1_{i1}} \dots a_{n_{in}}$ mit $i_1, \dots, i_n$ Permutationen aus
+  $\{1, \dots, n\}$
+   
+\item Inverse Matrix: $adj(A) = \left( (-1)^{i+j}M_{ij} \right)^t$
+  \paragraph{Anmerkung:} Es gilt $A \cdot
+  adj(A) = adj(A) \cdot A = det(A) \cdot Id_n$ und falls $det(A) \neq 0: A^{-1}
+  = \frac{adj(A)}{det(A)}$
+\end{itemize}
+
+\subsection{Lineare Abbildungen und Matrizen}
+\label{subsec:lineareabbildungenundmatrizen}
+
+$\forall A \in Mat_{m,n}(K) \exists ! \psi_A: K^n \to K^m, x \mapsto Ax$. Es gibt
+also einen Isomorphismus
+\[Hom(K^n,K^m) \overset{\simeq}{\to} Mat_{m,n}(A)\]
+
+\section{Monoide}
+\label{sec:monoide}
+\paragraph{Definition 3.1} Sei $M$ eine Menge. Ein Monoid ist ein Tripel $\left(
+  M, \circ, e \right)$ mit: \\
+$\circ: M \times M \to M, (x, y) \mapsto x \circ y$
+Mit den folgenden Eigenschaften:
+\begin{itemize}
+\item $\forall x,y,z \in M: \left( x \circ y \right) \circ z = x \circ \left(
+    y \circ z \right)$
+\item $\forall x \in M: x \circ e = x$
+\end{itemize}
+
+\paragraph{Beispiele 3.2}
+\begin{enumerate}
+\item $ \left( \mathbb{Z}, +, 0 \right) $ ist ein Monoid.
+\item $V$ Vektorraum über $K$: $\left( v, +, 0 \right)$ ist ein Monoid.
+\item $\left( \mathbb{Z}, \cdot, 1 \right)$ ist ein Monoid.
+\item $ \left( Mat_{n,n}(K), \cdot, Id_n \right)$ ist ein Monoid.
+\end{enumerate}
+
+\paragraph{Bemerkung 3.3}
+Sei $M$ Monoid, dann ist das $1$ Element eindeutig.
+
+\paragraph{Definition 3.4} $M$ heißt kommutativ $\leftrightarrow \forall x,y \in
+M x \circ y = y \circ x$
+
+\paragraph{Bemerkung 3.5} Wenn $M$ kommutativ ist dann schreibt man $x+y$
+anstatt $x \circ y$. Außerdem (falls $x$ invertierbar):
+\[
+  \underset{n-mal}{x \circ \dots \circ x} = x^n ~,~ x^0 = e ~,~ \forall m,n \in
+  \mathbb{Z}_{\geq 0}: x^n \circ x^m = x^{m+n}
+\]
+
+\paragraph{Definition 3.6} Sei $M$ Monoid. Dann heißt $M$ invertierbar gdw.
+\[
+  \exists y \in M: y \circ x = e ~\text{(links Inverse)}
+\]
+\[
+  \exists z \in M: x \circ z = e ~\text{(rechts Inverse)}
+\]
+
+\paragraph{Lemma 3.7} Falls $x$ invertierbar ist, dann ist jedes links Inverse
+gleich jedem rechts Inverse. \\
+\textit{Beweis} $y = y \circ e = y \circ x \circ z = e \circ z = z \hfill
+\square$
+
+\paragraph{Bemerkung 3.8} $x$ invertierbar dann schreibe $x^{-1}$ (mult.) oder
+$-x$ (additiv).
+
+\section{Relationen}
+\label{sec:relationen}
+
+\paragraph{Definition 4.1} Sei $X$ eine Menge. Eine \textit{Relation} $R$ auf
+$X$ ist eine Teilmenge $R \subset X \times X$. Man schreibt $x \sim_R y$, wenn
+$(x,y) \in R$.
+
+\paragraph{Beispiele 4.2}
+\begin{enumerate}
+\item $X =$ Menge aller Studierenden im Raum $R \subset X \times X: x \sim_R y
+  \Leftrightarrow \text{$x$ mag $y$}$
+\item $X = \mathbb{Z}~a \sim b \Leftrightarrow a < b$
+\item $X = \mathbb{Z}~a \sim b \Leftrightarrow a - b \in 2\mathbb{Z}$
+\end{enumerate}
+
+\paragraph{Definition 4.3}
+Sei $R$ Relation.
+\begin{itemize}
+\item $R~reflexiv~:\Leftrightarrow \forall x \in R: x \sim_R x$
+\item $R~symmetrisch~:\Leftrightarrow \forall x,y \in R: x \sim_R y
+  \Leftrightarrow y \sim_R x$
+\item $R~transitiv~:\Leftrightarrow \forall x,y,z \in R: x \sim_R y \wedge y
+  \sim_R z \Rightarrow x \sim_R z$
+\end{itemize}
+
+\subsection{Äquivalenzrelationen}
+\label{subsec:aequivalenzeraltionen}
+
+\paragraph{Definition 4.4}
+Eine Relation $R$ heißt Äquivalenzrelation, gdw. $R$ reflexiv, transitiv und
+symmetrisch ist.
+
+\paragraph{Definition 4.5}
+Sei $R$ Äquivalenzrelation auf $X$. $\forall x \in X: [x]_R = \{a \in X ~|~ a
+\sim_R x\} \subset X$.
+Nenne $[x]_R$ Äquivalenzklasse von $x$ bezüglich $R$. Mit Eigenschaften:
+\begin{enumerate}
+\item $\forall x,y \in R: [x]_R = [y]_R \Leftrightarrow y \in [x]_R$
+\item $X$ zerfällt in disjunkte Vereinigung der Äquivalenzklassen.
+\end{enumerate}
+\textit{Beweis} Übung.
+
+\paragraph{Definition 4.6} Die Menge der Äquivalenzklassen wird mit $X/R$ oder
+$X/\sim$ bezeichnet. Man nennt $X/\sim$ Quotient bzgl. $\sim$.
+
+\paragraph{Beispiel 4.7} $a \sim b \Leftrightarrow a - b \in \mathbb{Z}$ ~~
+$\mathbb{Z} = \{[0], [1], \dots, [n - 1]\}$
+
+\section{Gruppen}
+\label{sec:gruppen}
+
+\paragraph{Definition 5.1} Eine Gruppe ist ein Monoid in dem jedes Element
+invertierbar ist.
+
+\paragraph{Lemma 5.2} Sei $M$ ein Monoid.
+\[
+  M^\star = \{ x \in M ~|~ x ~\text{invertierbar} \} \subset M \Rightarrow M^\star
+  ~\text{ist Gruppe}
+\]
+\textit{Beweis} $x,y \in M^\star, x \circ y \overset{?}{\in} M^\star$
+\[
+  \left( x \circ y \right) \circ \left( y^{-1} \circ x^{-1}\right) = e
+\]
+
+\paragraph{Beispiele 5.3}
+\begin{enumerate}
+\item $G = \{e\}$ ist Gruppe.
+\item $\left( \mathbb{Z}, + \right)$ oder auch mit $\mathbb{Q, R, C}$ ist Gruppe.
+\item $\left( \mathbb{Q}, \cdot \right)$ oder auch mit $\mathbb{R^\star,C^\star}$
+\item $S' = \{ z \in \mathbb{C} ~|~ |z| = 1\} \left( z = e^{i\phi} ~~ z^{-1} =
+    e^{-i\phi} \right)$
+\item $M = \{ z \in \mathbb{C} ~|~ z^n = 1\} \subset S'$ $M$ hat $n$ Elemente.
+\item $GL_n(K) = \{ A \in Mat_{n,n}(k) ~|~ det(A) \neq 0\}$
+  \item $SL_n(K) = \{ A \in Mat_{n,n}(K) ~|~ det(A) = 1\}$
+\end{enumerate}
+
+\paragraph{Lemma 5.4} Sei $G$ eine Gruppe und $x,y,z \in G$, dann gilt:
+\begin{enumerate}
+\item $x \circ y = x \circ z \Rightarrow y = z$
+\item $y \circ x = z \circ x \Rightarrow y = z$
+\end{enumerate}
+\textit{Beweis}
+\begin{enumerate}
+\item Gelte $x \circ y = x \circ z$ dann folgt $x^{-1} \circ x \circ z
+  \Rightarrow y = z \hfill \square$
+\item analog
+\end{enumerate}
+
+\paragraph{Definition 5.5} Sei $G$ eine Gruppe, dann heißt $G$ kommutativ oder
+abelsch $\Leftrightarrow \forall x,y \in G: x \circ y = y \circ x$
+
+\paragraph{Definition 5.6} Sei $G$ eine Gruppe, $H \subset G$ so nenne $H$
+Untergruppe gdw.
+\begin{itemize}
+\item $e \in H$
+\item $x,y \in H: x \circ y \in H$
+\end{itemize}
+
+\paragraph{Beispiele 5.7}
+\begin{enumerate}
+\item $n\mathbb{Z} \subset \mathbb{Z}$ mit Addition ist Untergruppe.
+\item $\mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$
+\item $\mathbb{Z}^\star \subset \mathbb{Q}^\star \subset \mathbb{R}^\star
+  \subset \mathbb{C}^\star$
+\item $GL_n(\mathbb{Z}) \subset GL_n(\mathbb{Q}) \subset \dots$
+\item $SL_n(\mathbb{Z}) \subset \dots$
+\end{enumerate}
+
+\subsection{Gruppenhomomorphismen}
+\label{subsec:gruppenhomomorphismen}
+
+\paragraph{Definition 5.8} Seien $G, H$ Gruppen und $f: G \to H$. Dann ist $f$
+ein Gruppenhomomorphismus gdw.
+\begin{enumerate}
+\item $\forall a,b \in G: f(a \circ b) = f(a) \circ f(b)$
+\item $f(e_G) = e_H$
+\end{enumerate}
+
+\paragraph{Definition 5.9}
+\begin{enumerate}
+\item Monomorphismus = injektiver Homomorphismus
+\item Epimorphismus = surjektiver Homomorphismus
+\item Isomorphismus = bijektiver Homomorphismus
+\item Endomorphismus = $Hom(G, G) = End(G)$
+\item Automorphismus = bijektiver Endomorphismus = $Aut(G)$
+\end{enumerate}
+
+\paragraph{Definition 5.10}
+Sei $f: G \to H \in Hom(G,H)$
+\[
+  \begin{rcases}
+    ker(f) = \{x \in G ~|~ f(x) = e\} \subset G \\
+    im(f) = \{y \in H ~|~ \exists x \in G: f(x) = y\} \subset H
+  \end{rcases} \text{Untergruppe}
+\]
+
+\paragraph{Beispiel 5.11}
+~\\ $det: GL_n(K) \to K^\star$ mit $ker(det) = \{A \in GL_n(K) ~|~ det(A) = 1\} =
+SL_n(K)$
+
+\paragraph{Definition 5.12} Seien $G_1, G_2$ Gruppen und $A = G_1 \times G_2 =
+\{(g_1,g_2) \in G_1 \times G_2\}$
+\[
+  A \times A \to A: ((g_1, g_2), (h_1, h_2)) \mapsto (g_1 \circ h_1, g_2 \circ
+  h_2) ~\text{wobei}~ g_1 \circ h_1 \in G_1, g_2 \circ h_2 \in G_2
+\]
+definiert eine neue Gruppe. \\
+\textit{Beweis}
+\begin{itemize}
+\item Assoziativität folgt aus Assoziativität von $G_1$ und $G_2$
+\item $(e_{G1}, e_{G2}) = e_A$
+\item $(g_1, g_2) = (g_1^{-1}, g_2^{-1})$
+\end{itemize}
+
+\paragraph{Beispiel 5.13}  $\mathbb{Z} \times \mathbb{Z} = \{ (a, b) ~|~ a,b \in
+\mathbb{Z}\}$
+
+\subsection{Gruppenwirkungen}
+\label{subsec:gruppenwirkungen}
+
+\paragraph{Definition 5.14} Sei $G$ eine Gruppe und $X$ eine Menge. Eine
+\textit{Gruppenwirkung} von $G$ auf $X$ ist eine Abbildung:
+\[
+  \sigma: G \times X \to X, (g, x) \mapsto \sigma(g, x) = g \cdot x
+\]
+mit folgenden Eigenschaften:
+\begin{itemize}
+\item $\forall x \in X: \sigma(e, x) = x$
+\item $\forall g_1,g_2 \in G~\forall x \in X: \sigma(g_1 \cdot g_2, x) =
+  \sigma(g_1, \sigma(g_2, x))$
+\end{itemize}
+
+\paragraph{Beispiele 5.15}
+\begin{enumerate}
+\item $X = \{1, 2, \dots, n\} ~~ G = S_n $ Permutationsgruppe.
+\item $G \times G \to G$
+\item $
+  \begin{pmatrix}
+    a_{11} & \dots & a_{1n} \\
+    \vdots & \ddots & \vdots \\
+    a_{m1} & \dots & a_{mn}
+  \end{pmatrix} \cdot
+  \begin{pmatrix}
+    x_1 \\
+    \vdots \\
+    x_n
+  \end{pmatrix} \in G = GL_n(K)$
+\end{enumerate}
+
+\paragraph{Lemma 5.16} Sei $X$ eine Menge. Eine Gruppenwirkung definiert man
+äquivalent als Gruppenhomomorphismus.
+\[
+  \rho: G \to Aut(X),~ g \mapsto \rho(g)
+\]
+
+\paragraph{Definition 5.17} Sei $G$ Gruppe und $X$ Menge mit $G \circlearrowleft
+X$ dabei bezeichnet $\circlearrowleft$ eine Gruppenwirkung.
+\begin{itemize}
+\item Stabilisator: $x \in X: Stab(x) = \{g \in G ~|~ g \cdot x = x\}
+  \subset G$
+\item Orbit (Bahn): $x \in X: Orb(x) = \{y \in X ~|~ \exists g \in G: g \cdot x
+  = y\}$
+\item Eine Wirkung ist frei $:\Leftrightarrow \forall x \in X: Stab(x) = \{e\}$
+\item Eine Wirkung heißt transitiv $:\Leftrightarrow \forall x,y \in X \exists g
+  \in G: g \cdot x = y$
+\end{itemize}
+
+\paragraph{Bemerkung 5.18} Es gibt nur eine Bahn $\Leftrightarrow$ transitiv.
+\paragraph{Bemerkung 5.19} $G \circlearrowleft X$ definiert eine
+Äquivalenzrelation. Die Bahnen der Wirkung entsprechen den Äquivalenzklassen.
+\paragraph{Bemerkung 5.20} Genau genommen ist $\circlearrowleft$ linke Wirkung.
+Es gibt auch rechte Wirkungen (Bsp.: Matrizenmultiplikation von links.).
+
+\subsection{Nebenklassen}
+\label{subsec:nebenklassen}
+
+\paragraph{Definition 5.21} Sei $H \subset G$ Untergruppe. Die Relation
+\[
+  x \sim y \Leftrightarrow \exists h \in H: x \cdot h = y
+\]
+definiert eine Äquivalenzrelation. Die Äquivalenzklassen dieser Relation
+\[
+  xH = \{xh ~|~ h \in H\} \subset G
+\]
+nennt man \textit{Linksnebenklassen}. Die Gruppe $G$ zerfällt in disjunkte
+Vereinigung von $H$ Linksnebenklassen.
+Bezeichne die Menge der $H$ Linksnebenklassen mit $G/H$ ($G$ modulo $H$).
+Analog definiert man $H$ Rechtsnebenklassen.
+
+\paragraph{Beispiele 5.22}
+\begin{enumerate}
+\item Jede Untergruppe von $\mathbb{Z}$ ist in der Form $n\mathbb{Z}, n \geq 0$
+\item $\mathbb{Z}/n\mathbb{Z} = \{0 + n\mathbb{Z}, \dots, (n - 1) + n\mathbb{Z}\}$
+\end{enumerate}
+
+\paragraph{Satz 5.23} (\textit{Satz von Langrange}) Sei $G$ endl. Gruppe und $H$
+Untergruppe von $G$ dann gilt:
+\[
+  |G| = |H| \cdot |G/H|
+\]
+\textit{Beweis} $\dots$
+
+\paragraph{Lemma 5.24} Sei $G \circlearrowleft X$ transitiv. $\forall p \in X$
+kann man eine surjektive Abbildung
+\[
+  f_p: G \to X,~g \mapsto g\cdot p
+\]
+finden, die eine Bijektion $G/Stab(p) \to X$ induziert. \\
+\textit{Beweis} $\dots$
+
+\subsection{Normalteiler}
+\label{subsec:normalteiler}
+
+\paragraph{Lemma 5.25} Sei $H \subset G$ Untergruppe. Die folgenden Aussagen
+sind äquivalent:
+\begin{itemize}
+\item $\forall g \in G: gHg^{-1} = H$
+\item $\forall g \in G \forall h \in H: ghg^{-1} \in H$
+\item $\forall g \in G: gH = Hg$
+\item $H$ Linksnebenklassen = $H$ Rechtsnebenklassen
+\end{itemize}
+\textit{Beweis} $\dots$
+
+\paragraph{Definition 5.26} Eine Untergruppe $H \subset G$ heißt \textit{normal}
+oder \textit{Normalteiler} gdw. eine der Aussagen aus Lemma 5.25 gilt.
+
+\paragraph{Beispiele 5.27}
+\begin{enumerate}
+\item Jede Untergruppe in abelscher Gruppe ist normal.
+\item $SL_n(K) \subset GL_n(K)$ ist normal.
+\item $
+  \begin{pmatrix}
+    \star & \star \\
+    0 & \star
+  \end{pmatrix} \subset GL_2(K)
+  $ ist nicht normal.
+\end{enumerate}
+
+\paragraph{Lemma 5.28} Sei $\psi: G \to H$ ein Gruppenhomomorphismus dann folgt
+$ker(\psi)$ ist Normalteiler. \\
+\textit{Beweis} $\dots$
+
+\subsection{Faktorgruppen}
+\label{subsec:faktorgruppen}
+
+\paragraph{Definition 5.29} Ist $N \subset G$ Normalteiler, so macht die
+Verknüpfung
+\[
+  G/N \times G/N \to G/N,~(gN, hN) \mapsto (gh)N
+\]
+$G/N$ zu einer Gruppe mit neutralem $eN$ und Inversem $g^{-1}N$ zu $gN \in G/N$.
+$G/N$ wird Faktorgruppe oder Quotient von $G$ bzgl. $N$ genannt.
+\paragraph{Bemerkung 5.28} Die Assoziativität der Verknüpfung ist klar. Auserdem
+ist die Verknüpfung wohldefiniert. \\
+\textit{Beweis} $\dots$
+
+\subsection{Einige wichtige Sätze der elementaren Gruppentheorie}
+\label{subsec:einigewichtigesaetzederelementaregruppentheorie}
+
+\paragraph{Satz 5.29} (\textit{Homomorphiesatz}) Sei $f: G \to H$ ein
+Gruppenhomomorphismus. Dann ist
+\[
+  \overline{f}: G/ker(f) \to H,~\overline{f}([g]) = f(g)
+\]
+ein wohldefinierter injektiver Gruppenhomomorphismus. \\
+\textit{Beweis} $\dots$
+
+\paragraph{Bemerkung 5.30}
+\begin{itemize}
+\item Sei $f: G \to H$ Gruppenhomomorphismus und $N \subset
+  G$ ein Normalteiler mit $N \subset ker(f)$, dann ist $\overline{f}: G/N \to H,
+  \overline{f}([g]) = f(g)$ ein wohldefinierter Gruppenhomomorphismus.
+\item Sei $f: G \to H$ Gruppenhomomorphismus und $\overline{f}$ wie oben. Dann
+  ist $im(f) = im(\overline{f})$ ein Isomorphismus.
+\end{itemize}
+
+\paragraph{Beispiel 5.31} Betrachte den Gruppenhomomorphismus $f: \mathbb{R} \to
+\mathbb{C}\backslash\{0\},~t \mapsto e^{2\pi it}$. Dann ist $ker(f) =
+\mathbb{Z}$ und $im(f) = S^1$. Nach Homomorphiesatz ist also:
+\[
+  f: \mathbb{R}/\mathbb{Z} \to S^1,~[t] \mapsto e^{2\pi it}
+\]
+ein Gruppenhomomorphismus.
+
+\paragraph{Satz 5.32} (\textit{Korrespodenzsatz}) Seien $G$ eine Gruppe und $N
+\subset G$ ein Normalteiler. Setze
+\[
+  \mathcal{U} := \{U \subset G ~|~ N \subset U\}
+\]
+\[
+  \mathcal{V} := \{V \subset G/N ~\text{Untergruppe}\}
+\]
+Dann ist
+\[
+  \mathcal{U} \overset{a}{\to} \mathcal{V},~U \mapsto \pi(U)
+\]
+und
+\[
+  \mathcal{V} \overset{b}{\to} \mathcal{U},~V \mapsto \pi(V)
+\]
+eine Bijektion, wobei
+\[
+  \pi: G \to G/N,~g \mapsto [g]
+\]
+Es gilt zudem $U \in \mathcal{U}$ ist Normalteiler in $G \Leftrightarrow a(U)
+\subset G/N$ ist Normalteiler. \\
+\textit{Beweis} $\dots$
+
+\paragraph{Notation 5.33} Ist $G$ eine Gruppe, $N \in G$ ein Normalteiler und $H
+\subset G$ Untergruppe, dann setze $N \cdot H = \{n \in H, h \in H\}$. $N \cdot
+H$ ist eine wohldefinierte Untergruppe.
+
+\paragraph{Satz 5.34} (\textit{Isomorphiesatz}) Sei $G$ eine Gruppe.
+\begin{enumerate}
+\item Ist $H \subset G$ eine Untergruppe und $N \subset G$ ein Normalteiler.
+  Dann ist $N \subset N \cdot H$ und $H \cap N \subset H$ Normalteiler und es
+  existiert ein kanonischer Isomorphismus
+  \[
+    H/(N \cap H) \overset{\simeq}{\to} (NH)/N
+  \]
+  .
+\item Sind $N, H \subset G$ Normalteiler mit $H \subset N$ insbesondere ist also
+  auch $H \subset N$ Normalteiler. Dann ist auch $N/H \subset G/H$ Normalteiler
+  und es existiert ein kanonischer Isomorphismus
+  \[
+    G/N \overset{\simeq}{\to}(G/H)/(N/H)
+  \]
+  .
+\end{enumerate}
+\textit{Beweis} $\dots$
+
+\subsection{Zyklische Gruppen}
+\label{subsec:zyklischegruppen}
+
+Sei im folgenden $G$ eine Gruppe und $M \subset G$ eine Teilmenge.
+
+\paragraph{Definition 5.35}
+Bezeichne mit $\langle M \rangle$ die kleinste Untergruppe von $G$ die $M$
+enthält.
+
+\paragraph{Bemerkung 5.36}
+Es gibt in der Tat eine eindeutige solche Untergruppe, denn: Sind $U,V \in G$
+Untergruppen mit $M \subset U, M \subset V$,  so gilt $M \subset U \cap V$.
+
+\paragraph{Bemerkung 5.37}
+Die $\langle M \rangle$ besteht aus allen Elementen der Form
+\[
+  m_1^{i_1}m_2^{i_2} \dots m_n^{i_n} ,~~ n \in \mathbb{Z}_{\geq
+    0},~~
+  \begin{rcases}
+    m_j \in M \\
+    i,j \in \{\pm 1\}
+  \end{rcases} = j = 1, \dots, n
+\]
+Wichtig: $m_i = m_j$ für $i \neq j$ ist natürlich erlaubt.
+
+\paragraph{Notation 5.38}
+Ist $M = \{m_1, \dots, m_n\}$ für ein $n \in \mathbb{Z}_{\geq 0}$ schreibe auch
+$\langle M \rangle = \langle m_1, \dots, m_n \rangle$
+
+\paragraph{Definition 5.39}
+Eine Gruppe $G$ heißt \textit{zyklisch} gdw. es ein $g \in G$ gibt, sodass
+\[
+  G = \langle {g} \rangle = \{\dots, g^{-1}, e, g^1, \dots\}
+\]
+.
+
+\paragraph{Definition 5.40}
+Für ein Element $g \in G$ heißt $ord(g) := |\langle {g} \rangle|$ die Ordnung
+von G.
+
+\paragraph{Beispiele 5.41}
+\begin{enumerate}
+\item $\mathbb{Z} = \langle {1} \rangle$
+\item $\mathbb{Z}/n\mathbb{Z} = \langle {[1]} \rangle$ für $n \in \mathbb{Z}_{>
+    1}$
+\item Mit dem Satz von Langrange folgt: Ist $|G| = p$ für eine Gruppe und
+  Primzahl $p$, so ist $G$ zyklisch.
+\end{enumerate}
+
+\paragraph{Lemma 5.42}
+Sei $G = \langle {g} \rangle$ zyklische Gruppe
+\begin{enumerate}
+\item Jede Untergruppe von $G$ ist wieder zyklisch.
+\item Ist $|G| = n$, so existiert für jedes $m|n$ genau eine Untergruppe \\ $U_m
+  \subset G$ mit $|U_m| = m$.
+\end{enumerate}
+\textit{Beweis} $\dots$
+
+\paragraph{Beispiel 5.43}
+Sei $G = \langle {g} \rangle$ zyklische Gruppe Dann ist
+\[
+  f: \mathbb{Z} \to G,~i \mapsto g^i
+\]
+ein surjektiver Gruppenhomomorphismus. Als Untergruppe der zyklischen Gruppe
+$\mathbb{Z}$, ist also $ker(f)$ zyklisch, $ker(f) = \langle {n} \rangle =
+n\mathbb{Z}$ für ein $n \in \mathbb{Z}$.
+Nach Homomorphiesatz haben wir also einen Isomorphismus
+\[
+  \overline{f}:\mathbb{Z}/n\mathbb{Z} \overset{\simeq}{\to} G
+\]
+.
+\subsection{Symmetrische Gruppen}
+\label{subsec:symmetrischegruppen}
+
+\paragraph{Notation 5.44}
+Setze für $n \in \mathbb{Z}_{\geq 0}$~~$\triangle_n := \{1,2, \dots, n\}$
+
+\paragraph{Definition 5.45}
+Die Symmetrische Gruppe $S_n$ sei definiert als
+\[
+  S_n := Aut(\triangle_n) = (\{f: \triangle_n \to \triangle_n ~bijektiv\}, 0)
+\]
+.
+
+\paragraph{Bemerkung 5.46}
+$|S_n| = n!$
+
+\paragraph{Notation 5.47}
+Stelle $\sigma \in S_n$ dar durch
+\[
+  \begin{pmatrix}
+    1         & 2         & 3         & \dots & n         \\
+    \sigma(1) & \sigma(2) & \sigma(3) & \dots & \sigma(n)
+  \end{pmatrix}
+\]
+\begin{itemize}
+\item Ein Element $\tau \in S_n$ heißt \textit{k-Zykel} gdw. es $\{x_1, \dots,
+  x_k\} \in \triangle_n$ gibt sodass
+  \[
+    \begin{matrix}
+      &\tau(x_i) = x_{i+1} ~\text{für}~ i < k \\
+      &\tau(x_k) = x_1
+    \end{matrix}
+  \]
+  Wir notieren einen solchen Zykel als $(x_1, x_2, \dots, x_k)$.
+  \item Zwei Zykel $(x_1, \dots, x_k)$ und $(y_1, \dots, y_s)$ heißen disjunkt,
+    gdw. die Menge $\{x_1, \dots, x_k\}$ und $\{y_1, \dots, y_s\}$ disjunkt sind.
+\end{itemize}
+.
+
+\paragraph{Bemerkung 5.48}
+Sind $\tau$ und $\sigma$ disjunkte Zykel, so gilt $\tau \circ \sigma = \sigma
+\circ \tau$. Ein Zykel der Länge zwei wird \textit{Transposition} genannt.
+
+\subsection{Eigenschaften symmetrischer Gruppen}
+\label{subsec:eigenschaftensymmetrischergruppen}
+
+\paragraph{Satz 5.49}
+\begin{enumerate}
+\item Jedes Element $\sigma \in S_n$ lässt sich eindeutig (bis auf die
+  Reihenfolge der Faktoren) als Produkt disjunkter Zykel schreiben.
+\item Jedes $\sigma \in S_n$ ist ein Produkt von Transpositionen. D.h. $S_n =
+  \langle {T} \rangle$ für $T$ die Menge der Transpositionen in $S_n$.
+\end{enumerate}
+\textit{Beweis} $\dots$
+
+\paragraph{Beispiel 5.50}
+\[
+  \sigma =
+  \begin{pmatrix*}[r]
+    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\
+    3 & 8 & 5 & 4 & 6 & 1 & 11 & 9 & 2 & 10 & 7
+  \end{pmatrix*}
+  = (1, 3, 5) \circ (2, 8, 9) \circ (7, 11)
+\]
+
+\paragraph{Korollar 5.51}
+Für $ n \geq 2$ ist:
+\[
+  S_n = \langle {(1, 2), (1, \dots, n)} \rangle = \langle {(i, i+1), (1, \dots,
+    n)} \rangle
+\]
+für jedes $n \in \{1, \dots, n - 1\}$. Für $n = p$ Primzahl und $\tau \in S_p$
+Transposition, $\sigma \in S_p$ p-Zykel ist $S_p = \langle {\tau, \sigma}
+\rangle$. \\
+\textit{Beweis} $\dots$
+
+\paragraph{Definition 5.52}
+Für jedes $\sigma \in S_n$ heißt
+\[
+  sgn(\sigma) := \prod_{i < j}\frac{\sigma(i) - \sigma(j)}{i - j}
+\]
+das \textit{Signum} von $\sigma$.
+
+\paragraph{Satz 5.53}
+\begin{enumerate}
+\item Das Signum definiert einen Gruppenhomomorphismus
+  \[
+    sgn: S_n \to (\{\pm 1\}, \circ),~\sigma \mapsto sgn(\sigma)
+  \]
+\item $sgn((x_1, \dots, x_k)) = -1^{k-1}$
+\end{enumerate}
+\textit{Beweis} $\dots$
+
+\paragraph{Definition 5.54}
+$A_n := ker(sgn) \in S_n$ heißt \textit{alternierende} Gruppe.
+
+\section{Ringe und Module}
+\label{sec:ringeundmodule}
+
+\paragraph{Definition 6.1} 
+Ein \textit{Ring} ist ein Tupel $(R, +, \cdot, 0, 1)$ wobei $R$ eine Menge, $+$
+die Addition, $\cdot$ die Multiplikation, $0$ das neutrale Element der Addition
+und $1$ das neutrale Element der Multiplikation ist, mit folgenden Eigenschaften:
+\begin{itemize}
+\item $(R, +, 0)$ ist eine abelsche Gruppe
+\item $(R, \circ, 1)$ ist ein Monoid
+\item $\forall a,b,c \in R: a \cdot (b + c) = a \cdot b + a \cdot c$
+\end{itemize}
+Ein Ring heißt textit{kommutativ}, falls $(R, \circ, 1)$ kommutativ ist.
+
+\paragraph{Bemerkung 6.2}
+$0$ und $1$ sind in einem Ring eindeutig definiert.
+
+\paragraph{Beispiele 6.3}
+\begin{enumerate}
+\item $(\mathbb{Z}, +, \circ)$ ist ein Ring.
+\item $(\mathbb{Q}, +, \circ)$ ist ein Ring.
+\item $(\mathbb{K}, +, \circ)$ ist ein Ring, wobei $K$ ein Körper ist.
+\item Seien $X$ eine Menge und $Funkt(X, \mathbb{R}) := \{f: X \to \mathbb{R}\}$
+  dann ist $(Funkt(X, \mathbb{R}), +, \cdot)$ ein Ring.
+\item $R = \{0\}$ mit  $0 = 1$ ist ein Ring.
+\end{enumerate}
+
+\paragraph{Lemma 6.4}
+Ein Ring mit $0 \neq 1$ heißt $Divisionsring$ falls $\forall x \in R \backslash
+\{0\}: x \cdot x^{-1} = 1$ gilt.
+$R^\star := R \backslash \{ 0 \}$ ist eine Gruppe.
+Ein Körper ist ein kommutativer Divisionsring.
+
+\paragraph{Bemerkung 6.5}
+Die Definition 6.4 ist äquivalent zur ersten Definition eines Körpers.
+
+\paragraph{Definition 6.6}
+Ein \textit{Ringhomomorphismus} $f: R \to S$ ist eine Abbildung mit dem
+folgenden Eigenschaften:
+\begin{itemize}
+\item $\forall a,b \in R: f(a) + f(b) = f(a + b)$
+\item $\forall a,b \in R: f(a) \cdot f(b) = f(a \cdot b)$
+\item $f(1_R) = 1_S$
+\end{itemize}
+Punkt 3 folgt nicht automatisch weil $\cdot$ ein Monoid ist und keine Gruppe.
+
+\paragraph{Beispiele 6.7}
+\begin{itemize}
+\item $\mathbb{Z} \subset \mathbb{Q},~a \mapsto a$
+\item $Funk(X, \mathbb{R})$ ist ein Ring (Bsp.: 6.3.4)
+  \[
+    S = \mathbb{R}~~P \in X~~R \to S,~f \mapsto f(p)~\text{Evulationsabb.}
+  \]
+  ist ein Ringhomomorphismus.
+\end{itemize}
+
+\paragraph{Definition 6.8}
+Sei $R$ ein Ring. Eine Teilmenge $S \subset R$ heißt \textit{Unterring}, falls:
+\begin{itemize}
+\item $S \subset R$ ist Untergruppe bzgl. Addition.
+\item $S \cdot S \subset S$
+\item $1_R \in S$
+\end{itemize}
+
+\paragraph{Beispiele 6.9}
+\begin{enumerate}
+\item $\mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$
+\item In $(\mathbb{Z}, +, \cdot)$ gibt es keinen Unterring (außer $\mathbb{Z}$),
+  denn alle  Untergruppe sind in der Form $n \mathbb{Z} \subset \mathbb{Z}$ aber
+  $1_R \notin n \mathbb{Z}$
+\item $\dots \subset C'(\mathbb{R}, \mathbb{R}) \subset Funkt(\mathbb{R},
+  \mathbb{R})$
+\end{enumerate}
+
+\paragraph{Definition 6.10}
+Sei $R$ ein Ring und $I \subset R$ eine Untergruppe bzgl. Addition.
+\begin{itemize}
+\item $I$ heißt \textit{Linksideal} $\Leftrightarrow R \cdot I \subset I$
+\item $I$ heißt \textit{Rechtsideal} $\Leftrightarrow$ $I \cdot R \subset I$
+\item $I$ heißt \textit{Zweiseitigesideal} $\Leftrightarrow I$ Rechts- und
+  Linksideal
+\end{itemize}
+Beachte: Nenne Zweiseitigesideal Ideal.
+
+\paragraph{Bemerkung 6.11}
+Sei $I$ Rechts-, Links- oder Zweiseitigesideal.
+\begin{itemize}
+\item $I \subset R ~\text{ist Unterring} \Leftrightarrow I = R$
+\item Falls $R$ kommutativ ist, sind alle drei Begriffe äquivalent.
+\end{itemize}
+
+\paragraph{Beispiele 6.12}
+\begin{enumerate}
+\item Sei $R$ Ring $I = \{ 0 \}$ ist Zweiseitigesideal, genauso wie $I = R$.
+\item In einem Körper $K$ gibt es keine Ideale $I \subset K~~I \neq \{ 0 \} \neq
+  \{ K \}$
+\item $R = \mathbb{Z}$ dann sind alle Ideal der Form $n \mathbb{Z} = I \subset
+  \mathbb{Z}$
+\item Sei $X$ Menge $R = Funkt(\mathbb{R}, \mathbb{R})$ und $P \in X$ mit $I =
+  \{ f \in R ~|~ f(P) = 0\}$ ist Untergruppe ($I$ ist Ideal).
+\end{enumerate}
+
+\end{document}
+
