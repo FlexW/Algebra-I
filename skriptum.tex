@@ -1209,7 +1209,7 @@ Jedes nicht invertierbare Element in $R$ liegt in einem maximalen Ideal. \\
 \textit{Beweis} \\
 $z \in I = (z) = Rz \neq R \hfill \square$
 
-\subsection*{Hauptidealbereiche}
+\subsection*{Hauptidealringe}
 \label{subsec:hauptidealbereiche}
 
 \paragraph{Wissen} ~\\
@@ -1217,8 +1217,11 @@ $R$ kommutativer Ring $I \subset R$ heißt Hauptideal $\Leftrightarrow \exists x
 \in R: I = (x) := \{ax ~|~ a \in R\}$
 
 \paragraph{Definition 6.40}
-$R$ heißt Hauptidealbereich $\Leftrightarrow 0 \neq 1$ und jedes Ideal ein
-Hauptideal ist.
+\begin{enumerate}
+\item $R$ heißt Hauptidealring $\Leftrightarrow 0 \neq 1$ und jedes Ideal ein
+  Hauptideal ist.
+\item \textit{Hauptidealbereich} = Hauptidealring + Integritätsbereich
+\end{enumerate}
 
 \paragraph{Beispiel 6.41}
 \begin{enumerate}
@@ -1255,7 +1258,7 @@ mit
 Übungsblatt
 
 \paragraph{Lemma 6.45}
-Ein Ring mit Division mit Rest ist ein Hauptidealbereich. \\
+Ein Ring mit Division mit Rest ist ein Hauptidealring. \\
 \textit{Beweis} \\
 $(0) \neq I \subset R$, $0 \neq b \in I$ mit der Eigenschaft
 \[
@@ -1265,5 +1268,183 @@ $\overset{?}{\Rightarrow}$ $I = (b)$ \\
 $a \in I \Rightarrow a = qb + r ~~ \phi(r) < \phi(b) \Rightarrow r = 0
 \Rightarrow a = qb \hfill \square$
 
-\end{document}
+\paragraph{Definition 6.46}
+Sei $R$ ein Integritätsbereich.
+\begin{enumerate}
+\item $d \in R$ heißt Teiler von $a \in R \Leftrightarrow a = dc ~ c \in R$.
+  Man schreibt $d|a$ (d teilt a).
+\item $d \in R$ heißt größer gemeinsamer Teiler von $a,b \in R \Leftrightarrow$
+  \begin{itemize}
+  \item $d|a$ und $d|b$
+  \item $\forall d' \in R: d'|a$ und $d'|b$ gilt $d'|d$
+  \end{itemize}
+  Größter gemeinsamer Teiler ist bis auf Multiplikation mit einem invertierbaren
+  Element eindeutig definiert.
+  \textbf{Notation:} $gcd(a,b)$
+\end{enumerate}
 
+\paragraph{Lemma 6.47}
+Sei $R$ ein Hauptidealbereich $\Rightarrow \forall a,b \in R: \exists ~ \gcd(a,b)$
+\\
+\textit{Beweis} \\
+$a,b \in R$ \\
+$ I = (a,b) = aR + bR$ \\
+$\exists d \in R: I = (d) = dR$ \\
+$d \overset{?}{=} \gcd(a,b)$ \\
+$d|a$ ? $a \in I = (d) \Rightarrow a = dx, x \in R \Rightarrow d|a$ für $d|b$ analog.
+\\
+$d'|a ~~ a = d'x'$ \\
+$d'|b ~~ b = d'y'$ \\
+$\overset{?}{\Rightarrow} d'|d$ wegen \\
+$d \in I ~~ d = \underset{d'x'}{a \alpha}
++ \underset{d'y'}{b \beta} , \alpha, \beta \in R$ \\
+$d = d'(x' \alpha + y' \beta) \hfill \square$
+
+\paragraph{Bemerkung 6.48}
+Sei $R$ Hauptidealbereich.
+\[
+  d = \gcd(a,b) \Rightarrow d = a\alpha + b\beta, mit \alpha,\beta \in R
+\]
+
+\paragraph{Definition 6.49}
+Ein Ring $R$ heißt
+\begin{enumerate}
+\item \textit{noethersch} $\Leftrightarrow$ Jede aufsteigende Kette von Idealen
+  stationär wird.
+\item \textit{artinsch} $\Leftrightarrow $ Jede absteigende Kette von Idealen
+  stationär wird.
+  \begin{itemize}
+  \item aufsteigende Kette: $I_1 \subset I_2 \subset \dots$
+  \item stationär $\Leftrightarrow \exists n: I_j = I_n$ f.a. $j \geq n$
+  \item absteigende Kette: $\dots \subset I_2 \subset I_1$
+\end{itemize}
+\end{enumerate}
+
+\paragraph{Beispiel 6.50}
+$R = \mathbb{Z} ~~ (n_1) \subset (n_2) \subset \dots$ \\
+$n_i \in \mathbb{Z}$ mit $n_{i+1}|n_i$ \\
+\begin{itemize}
+ \item $\Rightarrow$ jede aufsteigende Kette stationär wird
+\item $\Rightarrow \mathbb{Z}$ ist noethersch.
+\end{itemize}
+\textbf{Frage:} Ist $\mathbb{Z}$ noethersch? Nein!
+
+\paragraph{Lemma 6.51}
+Hauptidealringe sind noethersch. \\
+\textit{Beweis} \\
+\[
+  I_1 \subset I_2 \subset \dots
+\]
+aufsteigende Kette von Idealen.
+\[
+  I = (d) = \bigcup_{j = 1}^\infty I_j, ~~ d \in R ~~ \text{Ideal}
+\]
+\[
+  d \in I \Rightarrow \exists n: d \in I_n \Rightarrow  I \subset I_n
+  \Rightarrow I_j = I_n ~~ \text{f.a.} ~ j \geq n 
+\]
+\hfill $\square$
+
+\subsection{Faktorielle Ringe}
+\label{subsec:faktorielleringe}
+
+\paragraph{Definition 6.52}
+\begin{enumerate}
+\item $u \in R$ heißt Einheit $\Leftrightarrow u$ hat ein multiplikatives Inverses.
+  \\
+  Die Einheiten bilden eine Gruppe bzgl. Multiplikation. Diese Gruppe bezeichnet
+  man mit $R^*$.
+\item $a \in R$ heißt irreduzibel $\Leftrightarrow a \notin R^*$ und $(a = bc$
+  impliziert $b \in R^*$ oder $c \in R^*$).
+\end{enumerate}
+
+\paragraph{Beispiel 6.53}
+\begin{enumerate}
+\item $R = \mathbb{Z}$
+  \[
+    R^* = \{ \pm 1\}
+  \]
+\item $ n \in \mathbb{Z}$ ist irreduzibel $\Leftrightarrow |n|$ ist prim.
+\item $R$ bel. kommutativer Ring. $a \in R ~~ u \in R^* \Rightarrow (a) = (au)$
+\end{enumerate}
+
+\paragraph{Lemma 6.54}
+Sei $R$ ein Integritätsbereich und $a,b \in R$
+\[
+  (a) = (b) \Leftrightarrow b = au ~~ u \in R^*
+\]
+\textit{Beweis} \\
+\grqq $\Leftarrow$ \grqq ~~ Klar. \\
+\grqq $\Rightarrow$ \grqq \\
+O.B.d.A. $b \neq 0$ dann gilt:
+\[
+  (a) = (b) \Rightarrow b \in (a) \Rightarrow b = ax ~~ x \in R
+\]
+\[
+  (a) = (b) \Rightarrow a \in (b) \Rightarrow a = by ~~ y \in R
+\]
+$b = byx \Leftrightarrow b(1 - yx) = 0 \overset{b~=~0~+
+  ~\text{Integritätsbereich}}{\Rightarrow} 1 - yx = 0$
+\hfill $\square$
+
+\paragraph{Lemma 6.55}
+Sei $R$ ein Hauptidealbereich, $p in R$ ein irreduzibeles Element und
+$p|ab, ~~ a,b \in R$. Dann gilt:
+\[
+  p|a ~\text{oder}~ p|b
+\]
+\textit{Beweis} \\
+Nehmen wir an, dass $p \nmid a$ $\overset{?}{\Rightarrow} p|b$ \\
+$\Rightarrow \gcd(a, p) = 1 \Rightarrow 1 = ax + py
+\overset{b}{\Rightarrow} b = bax + bpy = p(dx + by) \Rightarrow p|b$ \hfill $\square$
+
+\paragraph{Lemma 6.56}
+Sei $R$ ein Integritätsbereich und $a \in R$. Dann gilt:
+\[
+  (a) ~ \text{ist prim} \Rightarrow a ~ \text{ist irreduzibel}
+\]
+\textit{Beweis} \\
+Nehmen wir an, dass $a$ nicht irreduzibel ist.
+\[
+  \Rightarrow a = bc ~ \text{mit} ~ b,c \in R \backslash R^*
+\]
+Übung.
+
+\paragraph{Definition 6.57}
+\begin{enumerate}
+\item Ein Element $0 \neq a \in R$ besitzt eine eindeutige Zerlegung in
+  irreduzibele Faktoren, wenn
+  \[
+    a = u \cdot \bigsqcap_{i = 1}^n p_i
+  \]
+  mit $u \in R^*, p_i$ irreduzibel und für jede solche Darstellung
+  \[
+    a = u' \cdot \bigsqcap_{i = 1}^m p'_i
+  \] $(*)$
+  mit $u' \in R^*, p_i$ irreduzibel gilt:
+  \begin{enumerate}
+  \item $m = n$
+  \item $P_i = v_ip'_i ~~ v_i \in R^*$
+  \end{enumerate}
+\item $R$ heißt faktorieller Ring  $\Leftrightarrow$
+  \begin{itemize}
+    \item $R$ ist Integritätsbereich.
+    \item Jedes Element hat eine Zerlegung $(*)$
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{Beispiel 6.58}
+\begin{enumerate}
+\item $\mathbb{Z}$ faktoriell
+\item $\mathbb{Z}\left[\sqrt{-5}\right]$ ist nicht faktoriell.
+\end{enumerate}
+
+\paragraph{Theorem 6.59}
+$R$ Hauptidealbereich $\Rightarrow R$ ist faktoriell. \\
+\textit{Beweis} \\
+nächstes Mal.
+
+\paragraph{Korollar 6.60}
+$\mathbb{Z}$ und $K[x]$ sind faktoriell.
+
+\end{document}
