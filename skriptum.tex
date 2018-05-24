@@ -812,7 +812,7 @@ Sei $R$ ein Ring und $I \subset R$ eine Untergruppe bzgl. Addition.
 \item $I$ heißt \textit{Zweiseitigesideal} $\Leftrightarrow I$ Rechts- und
   Linksideal
 \end{itemize}
-Beachte: Nenne Zweiseitigesideal Ideal.
+Beachte: Nenne Zweiseitigesideal, Ideal.
 
 \paragraph{Bemerkung 6.11}
 Sei $I$ Rechts-, Links- oder Zweiseitigesideal.
@@ -831,6 +831,439 @@ Sei $I$ Rechts-, Links- oder Zweiseitigesideal.
 \item Sei $X$ Menge $R = Funkt(\mathbb{R}, \mathbb{R})$ und $P \in X$ mit $I =
   \{ f \in R ~|~ f(P) = 0\}$ ist Untergruppe ($I$ ist Ideal).
 \end{enumerate}
+
+\paragraph{Definition 6.13}
+Sei $f: R \to S$ ein Ringhomomorphismus mit
+\begin{enumerate}
+\item $ker(f) = \{ a \in R ~|~ f(a) = 0\} \subset R$
+\item $im(f) = \{ b  \in S ~|~ b = f(a), a \in R \} \subset S$
+\end{enumerate}
+
+\paragraph{Lemma 6.14}
+\begin{enumerate}
+\item $ker(f)$ ist zweiseitiges Ideal.
+\item $im(f)$ ist ein Unterring.
+\end{enumerate}
+
+\textit{Beweis}
+%\begin{enumerate}
+%\item $f(a + b) = f(a) + f(b)~a,b \in ker(f) \Rightarrow a + b \in ker(f)
+%  \Rightarrow \text{Untergruppe}$ \\
+%  $0 \in ker(f),~~ a \in ker(f) \Rightarrow -a \in ker(f)$ \\
+%  $f(a \cdot b) = \underbrace{f(a) \cdot \underbrace{f(b)}_{=0}}_{= 0}$
+%\item $ im(f) \subset S$ Unterring \\
+%  Untergruppe, $im(f) \cdot im(f) \subset im(f), 1_S \in im(f)$ \\
+%  $a_1, a_2 \in im(f) \exists b_1, b_2 \in R: f(b_1) = a_1$
+%\end{enumerate}
+
+\paragraph{Lemma 6.15}
+Sei $f: R \to S$ Ringhomomorphismus. Dann gilt
+\begin{enumerate}
+\item $f$ injektiv $\Leftrightarrow ker(f) = \{0\}$
+\item $f$ surjektiv $\Leftrightarrow im(f) = S$
+\end{enumerate}
+\textit{Beweis} \\
+1.  $f(a) = f(b) \Leftrightarrow a = b$ \\
+$f(a) = f(b) \Leftrightarrow f(a) - f(b) = 0$ \\
+Aber $f(a) - f(b) = f(a - b)$ Deswegen:
+$a - b \in ker(f)$
+\\\\
+$\Rightarrow$ $f$ injektiv $\Rightarrow a = b \Rightarrow 0 \in ker(f)$
+\\\\\\
+$\Leftarrow$ \\
+$a - b = 0 \Leftrightarrow a = b$\\
+Beweis von 2. ist klar
+$\hfill \square$
+
+\paragraph{Bemerkung 6.16}
+$S \subset R$ wobei $S$ Unterring. Betrachte Abbildung
+\[
+  S \to R,~a \mapsto a
+\]
+die einen Ringhomomorphismus darstellt. D.h. jeder Unterring kann als Bild eines
+Ringhomomorphismus betrachtet werden.
+
+\paragraph{Definition 6.17}
+Sei $I \in R$ zweiseitiges Ideal. Die additive Gruppe von $R$ ist abelsch
+$\Rightarrow (I, +, 0) \subset (R, +, 0)$ Normalteiler.
+\[
+  R/I ~\text{Faktorgruppe}~~((a+I)(b+I) = (a+b) + I) ~~(**)
+\]
+Definiere Multiplikation auf $R/I$ durch:
+\[
+  (a + I) \cdot (b + I) := ab + I ~~(*)
+\]
+
+\paragraph{Lemma 6.17}
+Die Multiplikation in Definition 6.17 ist wohldefiniert. \\
+\textit{Beweis} \\
+$a + I, b + I~~ x \in a + I, y \in b + I$ \\
+Müssen zeigen, dass $x \cdot y \in ab + I$ \\
+$x \in a + I \Leftrightarrow x = a + u, u \in I $ \\
+$y \in b + I \Leftrightarrow y = a + v, v \in I $ \\
+$xy = (a + u)(b + v) = ab + av + au + ub + uv$ \\
+$av + au + ub + uv \in I$ weil $I$ zweiseitiges Ideal.
+$\hfill \square$
+
+\paragraph{Theorem 6.18}
+\begin{enumerate}
+\item $R/I$ mit $(*)$ und $(**)$ ist ein Ring.
+\item $R \to R/I,~a \mapsto a + I$ ist ein Epimorphismus mit $ker = I$.
+\end{enumerate}
+\textit{Beweis} \\
+Zu 1.: \\
+Aus Def 7.1 folgt, dass $R/I$ mit $(**)$ eine abelsche Gruppe ist. \\
+$R/I$ mit $(*)$ ist ein Monoid ? \\
+Assoziativität: $((a + I)(b + I))(c + I) = (ab + I)(c + I) = (ab)c + I = a(bc) +
+I = (a + I)(bc + I) = (a + I)((b + I)(c + I))$ \\
+Eins-Element: $(1 + I)(a + I) = a + I$ und $(a + I)(1 + I) = (a + I)$ \\
+$1 + I$ die Eins. \\
+$(**) und (*)$ sind distributiv: $((a + I) + (b + I))( c+ I) = (a + I)(c+ I) +
+(b + I)(c + I)$
+Zu 2.: \\
+klar
+$\hfill \square$
+
+\paragraph{Beispiel 6.19}
+\begin{enumerate}
+\item $R = (\mathbb{Z}, +, \cdot),~~ I = n\mathbb{Z},~~ \mathbb{Z}/n\mathbb{Z}$
+  hat $n$ Elemente.
+\end{enumerate}
+
+\paragraph{Theorem 6.20}
+Sei $f: R \to S$ ein Ringhomomorphismus. Dann gibt es einen natürlichen
+(kanonischen) Isomorphismus
+\[
+  \overline{f}: R/ker(f) \overset{\simeq}{\to} im(f)
+\]
+\textit{Beweis} $R \to im(f) \subset S$ und $R \overset{f}{\to} S$. Schicke $a
+\in R$ auf $a \mapsto a + I \in R/I$. \\
+$\overline{f}(a + I) := f(a)$ Wohldef.? Ja. Übung \\
+$\overline{f}$ surjektiv. OK \\
+$\overline{f}$ injektiv $\Leftrightarrow ker(\overline{f}) = \{0\} = \{a + I\}$ \\
+$f(a + ker(f)) = f(a) = 0 \Rightarrow a \in ker(f)$ \\
+Wenn $a \in ker(f) \Rightarrow a + ker(f) \in R/ker(f)$ ist die Null
+$\Rightarrow \overline{f}$ injektiv.
+$\hfill \square$
+
+\paragraph{Korollar 6.21}
+Sei $f: R \to S$ ein Ringhomomorphismus.
+\begin{enumerate}
+\item $f$ Epimorphismus $\Rightarrow S \simeq R/ker(f)$
+\item $f$ lässt sich schreiben als
+  \[
+    R \overset{f}{\to} S, ~ R \to R/ker(f) \overset{\overline{f}}{\to} im(f)
+    \subset S
+  \]
+\end{enumerate}
+\textit{Beweis} \\
+1. folgt sofort aus Theorem 6.20
+
+\paragraph{Satz 6.22}
+(\textit{Korrespodenzsatz für Ideale}) Sei $R$ ein Ring und $I \subset R$ ein
+zweiseitiges Ideal. Dann induziert die kanonische Projektion
+\[
+  \psi: R \to R/I
+\]
+eine Bijektion zwischen Linksideale in $R/I$ und Linksideale in $R$, die $I$
+enthalten. Analog geht es für Rechtsideale und Zweiseitigeideale. \\
+\textit{Beweis} \\
+Übungsblatt. Sehr ähnlich zu Satz 5.23.
+
+\subsection{Kommutative Ringe}
+\label{subsec:kommutativeringe}
+
+\paragraph{Beispiel 6.23} (\textit{Polynomringe})
+\begin{enumerate}
+\item Sei $R$ kommutativer Ring (z.B. $R = \mathbb{Z}$) \\
+  $x$ eine Variable (= Buchstabe)
+  Ein Polynom in $x$ über $R$ ist ein Ausdruck der Form
+  \[
+    a_0x^n + a_1x^{n-1} + \dots + a_{n-1}x + a~~~a_i \in R~n \in
+    \mathbb{Z}_{\geq 0}
+  \]
+  Addition: $P, Q$ Polynome
+  \[
+    P = a_nx^n + \dots a_{1}x+a_0 ~~
+    Q = b_mx^m + \dots + b_{1}xb_0
+  \]
+  \[
+     P + Q = \sum (a_i + b_i)x^i
+   \]
+   Multiplikation:
+   \[
+     P \cdot Q = \sum_{k = 0}^n \left( \sum_{i = 0}^k a_ib_{k - i} \right)x^k
+   \]
+   Die Eins ist $P = 1$ und die Null ist $P = 0$. \\
+   $R[x] = \{\text{Polynome in $x$ über $R$}\}$ ist ein kommutativer Ring.
+
+ \item Variablen $x_1, \dots, x_n$
+   \[
+     R[x_1, \dots, x_n] := \left(R[x_1, \dots, x_n]\right)[x_n]
+   \]
+   Explizit: Ein Element in $R[x_1, \dots, x_n]$ ist ein Ausdruck der Form
+   \[
+     P(x_1, \dots , x_n) = \sum_{I = (i_1, \dots, i_n)} a_I~x_i^{i_1} \dots x_n^{i_n}
+   \]
+   Warnung: $R = K$, $K$ ist Körper $P(x) \in K[x]$
+   \[
+     a \in K \mapsto P(a) \in K
+   \]
+   bekomme eine Abbildung
+   \[
+     \overset{\sim}{P}: K \to K
+   \]
+   Es kann passieren, dass
+   \[
+     \overset{\sim}{P} = \overset{\sim}{Q} ~\text{für} ~ P \neq Q
+   \]
+\end{enumerate}
+
+\paragraph{Definition 6.24}
+\begin{enumerate}
+\item Seien $I,J$ Ideale
+  \[
+    I + J := \{a + b \in R ~|~ a \in I~a \in J\}
+  \]
+\item
+  \[
+    I \cdot J := \{a_1b_1 + \dots + a_nb_n ~|~ a_i \in I~ b_i \in J~n \geq
+    \mathbb{Z}_{\geq 1}\}
+  \]
+\item $M \subset R$ Teilmenge
+  \[
+    (M) := \{r_1a_1 + \dots + r_na_n ~|~ r_i \in R~ a_i \in M ~ n \geq
+    \mathbb{Z}_{\geq 1}\} ~\text{Ideal}
+  \]
+  Ideal erzeugt von $M$.
+\item $M = \{m_1, \dots, m_n\}$ danns schreibt man
+  \[
+    (m_1, \dots, m_n) := (M)
+  \]
+  Ideal erzeugt von $(m_1, \dots, m_n)$.
+\item $M = \{m\}$ heißt $(M) = (m)$ \textit{Hauptideal}
+  \[
+    (m) = \{rm \in R ~|~ r \in R\}
+  \]
+\end{enumerate}
+
+\paragraph{Beispiel 6.25}
+\begin{enumerate}
+\item $(n) = n\mathbb{Z} \subset \mathbb{Z}$ Hauptideal.
+\end{enumerate}
+
+\paragraph{Definition 6.26}
+Sei $I \subset R$ ein Ideal.
+\begin{enumerate}
+\item $I$ heißt maximal $\Leftrightarrow$ Es gibt kein echtes Ideal, das $I$
+  enthält.
+\item $I$ prim $\Leftrightarrow$ (wenn $x \cdot y \in I \Rightarrow x \in I$
+  oder $y \in I$)
+\end{enumerate}
+
+\paragraph{Lemma 6.27}
+Jedes maximale Ideal ist prim. \\
+\textit{Beweis} \\
+maximal $\Rightarrow$ prim. $I \subset R$ maximales Ideal $x,y \in R$ mit $xy
+\in I$ \\
+Nehmen wir an, dass $x \notin I \overset{?}{\Rightarrow} y \in I$
+\[
+  I \subset I + (x) = \{a + bx ~|~ a \in I~b \in R\} \subset R
+\]
+Da $I$ maximal $\Rightarrow I + (x) = R$
+\[
+  1 = a + bx ~~ a \in I ~ b \in R
+\]
+mit $y$ multiplizieren
+\[
+  y = \underset{\in I}{ay} + \underset{\in I}{bxy} \in I
+\]
+$\hfill \square$
+
+\paragraph{Lemma 6.28}
+$I \subset R$ ist maximal $\Leftrightarrow R/I$ ist Körper \\
+\textit{Beweis} \\
+$S$ ist ein Körper  $\Leftrightarrow$ Es gibt keine nichttriviale Ideale. \\
+$R/I$ ist Körper $\Leftrightarrow$ Es gibt keine Ideale außer $(0)$ und $R/I$.\\
+Nach Korrespodenzsatz für Ideale: Ideale in
+$R/I \underset{\text{1 zu 1}}{\leftrightarrow} I \subset J
+\subset R$ folgt die Aussage.
+$\hfill \square$
+
+\paragraph{Beispiel 6.29}
+$R = \mathbb{Z}$ Alle Ideale sind von der Form $(n), n \in \mathbb{Z}$ \\
+Welche sind maximal?
+\[
+  (n) ~\text{maximal} \Leftrightarrow n ~\text{ist eine Primzahl}
+\]
+$(p) \subset \mathbb{Z} ~~ \mathbb{Z}/(p) =: \mathbb{F}_{2}$ der endlichen Körper
+mit $p$ Elementen.
+
+\paragraph{Definition 6.30}
+Sei $R$ ein kommutativer Ring
+\begin{enumerate}
+\item $0 \neq x \in R$ heißt \textit{Nullteiler}
+  $\Leftrightarrow \exists 0 \neq y \in R$ sodass $xy = 0$
+\item $R$ heißt Integritätsbereich $\Leftrightarrow$
+  Es gibt keine Nullteiler und $0 \neq 1$
+\end{enumerate}
+
+\paragraph{Beispiel 6.31}
+\begin{enumerate}
+\item $R = \mathbb{Z}$ keine Nullteiler  $\Rightarrow$ Integritätsbereich
+\item $R = \mathbb{Q}[x]$ keine Nullteiler $\Rightarrow$ Integritätsbereich
+\item $R = \mathbb{Q}[x]/\left(x^2\right)$ ~~
+  ($(x + I)(x + I) = \underset{\in I}{x^2} + I = I$) \\
+  $\Rightarrow$ Nullteiler, kein Integritätsbereich.
+\item $(0) \in R$ ist prim $\Leftrightarrow R$ ist Integritätsbereich \\
+  \textit{Beweis} \\
+  Übung
+\end{enumerate}
+
+\paragraph{Lemma 6.32}
+Sei $I \subset R$ ist prim $\Leftrightarrow R/I$ ist Integritätsbereich. \\
+\textit{Beweis} \\
+$x + I \in R/I$ und $x + y \in R/I$ ~~ $(x+I)(y+I) = xy + I$ \\
+\grqq $\Rightarrow$ \grqq \\
+Nehmen wir an, dass $I$ prim ist.
+\[
+  (x + I)(y + I) = I \Leftrightarrow xy \in I \Rightarrow (x \in I \vee y \in I)
+  \Leftrightarrow (x + I) = I ~oder~ y + I = I
+  \Rightarrow R/I ~\text{Integritätsbereich}
+\]
+\grqq $\Leftarrow$ \grqq \\
+$R/I$ Integritätsbereich $\Rightarrow$ $I$ prim.
+\[
+  (x + I)(y + I) = I \Rightarrow x \in I ~oder~ y \in I
+\]
+\hfill $\square$
+
+\paragraph{Definition 6.33}
+Sei $M$ eine Menge
+\begin{enumerate}
+\item Eine \textit{partielle Ordnung} auf $M$ ist eine Relation $\leq$, die reflexiv,
+  transitiv und antisymmetrisch ist.
+\item Eine Ordnung heißt \textit{total} $\Leftrightarrow \forall x,y \in M: ~
+  \text{entweder} ~ x \leq y ~\text{oder}~ y \leq x$.
+\item $x \in M$ heißt \textit{größtes Element} $\Leftrightarrow \forall a \in M:
+  a \leq x$.
+\item $x \in M$ heißt \textit{maximal} $\Leftrightarrow x \leq a$
+  impliziert $x = a$.
+\item $x \in M$ heißt \textit{obere Schranke} für eine Teilmenge $N \subset M
+  \Leftrightarrow \forall a \in N: a \leq x$.
+\end{enumerate}
+
+\paragraph{Beispiel 6.34}
+\begin{enumerate}
+\item $\mathbb{R}, ~ \leq$
+\item $X$ eine Menge $\rightsquigarrow M = $ die Menge von Teilmengen von $X$. Als
+  $\leq$ nehmen wir die Inklusion von Teilmengen.
+\end{enumerate}
+
+\paragraph{Bemerkung 6.35}
+\begin{enumerate}
+\item $\exists$ höchstens ein größtes Element.
+\item Wenn ein größtes Element existiert $\Rightarrow \exists$ nur ein maximales
+  Element. \\
+  \textit{Beweis} \\
+  $x$ größtes Element $z$ ein maximales Element $\Rightarrow x = z$ \\
+  $z \leq x$ (da $x$ größtes Element ist).
+  $\overset{Def.~ 6.33.4}{\Rightarrow} x = z$
+\item Meistens gibt es kein größtes Element aber viele maximale Elemente.
+\end{enumerate}
+
+\paragraph{Lemma 6.36}
+\textit{(Lemma von Zorn)} Sei $M$ eine partiell geordnete Menge, in der jede
+total geordnete Teilmenge (= eine Kette) eine obere Schranke hat.
+Dann enthält $M$ mindestens ein maximales Element. \\
+\textit{Beweis} \\
+Bosch, §3.4, Lemma 5
+
+\paragraph{Lemma 6.37}
+Sei $I \in R$ ein echtes Ideal. Dann existiert ein maximales Ideal $m \in R$,
+sodass $I \in m \in R$. \\
+\textit{Beweis} \\
+$M = \{J \underset{\neq}{\subset} R ~|~ I \subset J \} = $ die Menge aller echten
+Idealen in $R$, die $I$ enthalten, $J_1 \leq J_2 \Leftrightarrow J_1 \subset
+J_2$ Kette von Idealen $J_1 \subset J_2 \subset \dots$ Wir müssen zeigen, dass
+es ein echtes Ideal $J \in I \in R$ gibt sodass $\forall i : J_i \subset J$. \\
+$J := \bigcup_i J_i \subset R$
+\begin{enumerate}
+\item $J$ ist Ideal ?: \\
+  $x,y \in J \Rightarrow \exists a: x \in J_a ~\text{und}~ \exists b: b \in J_b$ \\
+  $c = max(a,b) \Rightarrow x,y \in J_c \Rightarrow x + y \in J_c \subset J$. \\
+  --- \\
+  $x \in J \Rightarrow x \in J_a$ \\
+  $x \cdot r \in J$: $x \cdot r \in J_a \subset J$.
+\item $J \neq R$ ?: \\
+  Sei $J = R \Rightarrow 1 \in J \Rightarrow \exists a: 1 \in J_a \Rightarrow J
+  = R ~~\lightning$
+\end{enumerate}
+
+\paragraph{Beispiel 6.38} $\mathbb{Z}$ welche Ideale sind maximal? \\
+maximale Ideale = $(p) = p \mathbb{Z} ~p$ eine Primzahl. \\
+maximale Ideale $\subset$ Primideale $= ~\text{maximale Ideale}~ \cup \{(0)\}$.
+
+\paragraph{Korollar 6.39}
+Jedes nicht invertierbare Element in $R$ liegt in einem maximalen Ideal. \\
+\textit{Beweis} \\
+$z \in I = (z) = Rz \neq R \hfill \square$
+
+\subsection*{Hauptidealbereiche}
+\label{subsec:hauptidealbereiche}
+
+\paragraph{Wissen} ~\\
+$R$ kommutativer Ring $I \subset R$ heißt Hauptideal $\Leftrightarrow \exists x
+\in R: I = (x) := \{ax ~|~ a \in R\}$
+
+\paragraph{Definition 6.40}
+$R$ heißt Hauptidealbereich $\Leftrightarrow 0 \neq 1$ und jedes Ideal ein
+Hauptideal ist.
+
+\paragraph{Beispiel 6.41}
+\begin{enumerate}
+\item $R = \mathbb{Z}$ Hauptidealbereich.
+\end{enumerate}
+
+\paragraph{Definition 6.42}
+Man sagt, dass in einem Ring $R$ eine Division mit Rest existiert, wenn es eine
+Funktion $\phi: R \to \mathbb{Z}_{\geq 0}$, soadss
+\begin{enumerate}
+\item $\phi^{-1}(0) = \{0\}$
+\item $\forall a,b \in R, b \neq 0, \exists q,r \in R: a = qb + r$
+  und $\phi(r) < \phi(b)$ ($q$ Quotient, $r$ Rest)
+\end{enumerate}
+
+\paragraph{Beispiel 6.43}
+\begin{enumerate}
+\item $R = \mathbb{Z}, \phi(n) = |n|$
+\item $R = K[X]$ wobei $K$ Körper ist. \\
+  $\phi(P(X)) := deg(P(X)) + 1$ und $deg(0) := -1$
+\end{enumerate}
+
+\paragraph{Lemma 6.44} \textit{(Polynomdivision)}
+Seien $K$ ein Körper und $A(x),B(x) \neq 0 \in K[x]$. Dann existieren eindeutige
+Polynome $Q(x), R(x) \in K[x],$ soadss
+\[
+  A(x) = Q(x)B(x) + R(x)
+\]
+mit
+\[
+  deg(R(x)) < deg(B(x))
+\]
+\textit{Beweis} \\
+Übungsblatt
+
+\paragraph{Lemma 6.45}
+Ein Ring mit Division mit Rest ist ein Hauptidealbereich. \\
+\textit{Beweis} \\
+$(0) \neq I \subset R$, $0 \neq b \in I$ mit der Eigenschaft
+\[
+  \phi(b) = min\{\phi(x) ~|~ 0 \neq x \in I\}
+\]
+$\overset{?}{\Rightarrow}$ $I = (b)$ \\
+$a \in I \Rightarrow a = qb + r ~~ \phi(r) < \phi(b) \Rightarrow r = 0
+\Rightarrow a = qb \hfill \square$
 
 \end{document}
 
