@@ -12,6 +12,18 @@
 \usepackage{enumitem}
 \usepackage{stmaryrd}
 
+\newcommand{\s}[1]{\overset{\sim}{#1}} % Funktion schlange
+\newcommand{\q}[1]{\overline{#1}} % Funktion quer
+\newcommand{\ub}[2]{\underbrace{#1}_{#2}} % \underbrace
+\newcommand{\ob}[2]{\overbrace{#1}^{#2}} % \overbrace
+\newcommand{\us}[2]{\underset{#1}{#2}} % \underset
+\newcommand{\os}[2]{\overset{#1}{#2}} % \overset
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
 \setcounter{MaxMatrixCols}{20}
 
 \everymath{\displaystyle}
@@ -1356,9 +1368,74 @@ aufsteigende Kette von Idealen.
   man mit $R^*$.
 \item $a \in R$ heißt irreduzibel $\Leftrightarrow a \notin R^*$ und $(a = bc$
   impliziert $b \in R^*$ oder $c \in R^*$).
+\item $x \in R$ heißt prim $\Leftrightarrow$ das Ideal $(x)$ ist ein Primideal.
+  $\Leftrightarrow (x|ab \Rightarrow x|a ~oder~ x|b)$
 \end{enumerate}
 
-\paragraph{Beispiel 6.53}
+\paragraph{Bemerkung}
+$R$ Integritätsbereich, dann ist jedes Primelement irreduzibel.
+
+\paragraph{Lemma 6.61}
+$R$ Integritätsbereich. Für ein Element $a \in R$ habe man Zerlegung
+\[
+  a = p_1 \dots p_r = q_1 \dots q_s
+\]
+wobei $p_i$ Primelemente sind und $q_i$ irreduzibel. Dann gilt $r = s$ und nach
+evntl. Umnummerierung der $q_j$ ist $p_i$ assoziert zu $q_i$
+f.a. $i = 1, \dots, r$. \\
+\textit{Beweis}
+\[
+  a = p_i \dots p_r = q_1 \dots q_s
+\]
+also
+\[
+  p_1|q_1, \dots q_s \Rightarrow \exists j: p_1|q_j
+\]
+Nach Umnummerierung, können wir $j = 1$ annehmen. D.h. $p_1|q_1$
+\[
+  p_1|q_1 \Rightarrow q_1 = p_1\underbrace{u}_{\in R^*}
+  \Rightarrow p_2 \dots p_r = uq_2 \dots q_s
+\]
+Beweis im Allgemeinen per Induktion.
+\hfill $\square$
+
+\paragraph{Lemma 6.62}
+Sei $R$ ein Integritätsbereich. Dann ist äquivalent:
+\begin{enumerate}
+\item Jedes Element $a \in R\backslash (R^*\cup \{0\})$ lässt sich eindeutig
+  (bis auf die Reihenfolge) als Produkt von irreudziblen Elementen schreiben.
+\item Jedes $a \in R\backslash (R^*\cup \{0\})$ lässt sich eindeutig
+  (bis auf die Reihenfolge) als Produkt von Primelementen schreiben. 
+\end{enumerate}
+\textit{Beweis}
+\paragraph{1. $\Rightarrow$ 2.} 
+Es genügt zu zeigen, dass jedes irreudzible Element ein Primelement ist.
+$a$ irreduzibel $\Rightarrow a$ prim
+\[
+  a|xy \overset{?}{\Rightarrow} a|x ~oder~ a|y
+\]
+\[
+  x = x_1 \dots x_n ~~ y = y_1 \dots y_m
+\]
+Wobei $x_i,y_i$ irreduzibel sind.
+\[
+  \Rightarrow a|x_1 \dots x_n y_1 \dots y_m
+\]
+Wegen Eindeutigkeit
+\[
+  \Rightarrow \exists x_i ~oder~ y_i: a ~\text{a ist assoziativ zu}~x_i,y_i
+\]
+\paragraph{2. $\Rightarrow$ 1.}
+Übung.
+
+\paragraph{Definition 6.63}
+Ein Integritätsbereich $R$ heißt faktoriell, wenn die äquivalenten Bedingunen
+von Lemma 6.62 erfüllt sind.
+
+\paragraph{Bemerkung 6.64}
+$R$ faktoriell. $a$ irreduzibel $\Leftrightarrow a$ ist Primelement. 
+
+\paragraph{Beispiel 6.65}
 \begin{enumerate}
 \item $R = \mathbb{Z}$
   \[
@@ -1368,7 +1445,7 @@ aufsteigende Kette von Idealen.
 \item $R$ bel. kommutativer Ring. $a \in R ~~ u \in R^* \Rightarrow (a) = (au)$
 \end{enumerate}
 
-\paragraph{Lemma 6.54}
+\paragraph{Lemma 6.66}
 Sei $R$ ein Integritätsbereich und $a,b \in R$
 \[
   (a) = (b) \Leftrightarrow b = au ~~ u \in R^*
@@ -1387,7 +1464,7 @@ $b = byx \Leftrightarrow b(1 - yx) = 0 \overset{b~=~0~+
   ~\text{Integritätsbereich}}{\Rightarrow} 1 - yx = 0$
 \hfill $\square$
 
-\paragraph{Lemma 6.55}
+\paragraph{Lemma 6.67}
 Sei $R$ ein Hauptidealbereich, $p in R$ ein irreduzibeles Element und
 $p|ab, ~~ a,b \in R$. Dann gilt:
 \[
@@ -1398,7 +1475,7 @@ Nehmen wir an, dass $p \nmid a$ $\overset{?}{\Rightarrow} p|b$ \\
 $\Rightarrow \gcd(a, p) = 1 \Rightarrow 1 = ax + py
 \overset{b}{\Rightarrow} b = bax + bpy = p(dx + by) \Rightarrow p|b$ \hfill $\square$
 
-\paragraph{Lemma 6.56}
+\paragraph{Lemma 6.68}
 Sei $R$ ein Integritätsbereich und $a \in R$. Dann gilt:
 \[
   (a) ~ \text{ist prim} \Rightarrow a ~ \text{ist irreduzibel}
@@ -1410,7 +1487,7 @@ Nehmen wir an, dass $a$ nicht irreduzibel ist.
 \]
 Übung.
 
-\paragraph{Definition 6.57}
+\paragraph{Definition 6.69}
 \begin{enumerate}
 \item Ein Element $0 \neq a \in R$ besitzt eine eindeutige Zerlegung in
   irreduzibele Faktoren, wenn
@@ -1433,18 +1510,104 @@ Nehmen wir an, dass $a$ nicht irreduzibel ist.
   \end{itemize}
 \end{enumerate}
 
-\paragraph{Beispiel 6.58}
+\paragraph{Beispiel 6.70}
 \begin{enumerate}
 \item $\mathbb{Z}$ faktoriell
 \item $\mathbb{Z}\left[\sqrt{-5}\right]$ ist nicht faktoriell.
 \end{enumerate}
 
-\paragraph{Theorem 6.59}
+\paragraph{Theorem 6.71}
 $R$ Hauptidealbereich $\Rightarrow R$ ist faktoriell. \\
 \textit{Beweis} \\
-nächstes Mal.
+$a \in R\backslash (R^*\cup \{0\})$
+\begin{enumerate}
+\item Zu zeigen: $a$ hat einen irreduziblen Teiler. \\
+  $a$ irreduzibel $\Rightarrow$ fertig. Falls $a$ reduzibel $\Rightarrow a =
+  a_1b_1 ~~ a_1,b_1 \notin R^* \Rightarrow (a) \subset (a_1) = Ra$. Falls nun
+  $a_1$ irreduzibel sind wir wieder fertig. Falls $a$ reduzibel $\Rightarrow
+  a_1 = a_2b_2 ~~ a_2,b_2 \notin R^*$. Nach Lemma wird diese Kette stationär.
+  $\Rightarrow a_n$ ist irreduzibel und $a_n|a$.
+\item Zu zeigen: $a$ lässt sich als Produkt von irreduziblen Elementen
+  schreiben. \\
+  $a$ hat irreduziblen Teiler
+  \[
+    \Rightarrow a = a_1q_1
+  \]
+  $q_1$ irreduzibel. Es folgt wieder $a_1 \in R^*$ oder $a_1$ hat einen
+  irreduziblen Teiler $\Rightarrow (a) \subset (a_1)$
+  \[
+    (a) \subset (a_1) \subset (a_2) \dots
+  \]
+  wird stationär $\Rightarrow a = n q_1 \dots q_n$
+  
+\item Zu zeigen: Produkt aus 2. ist eindeutig (bis auf die Assoziativität und
+  Reihenfolge).
+\end{enumerate}
+\hfill $\square$
 
-\paragraph{Korollar 6.60}
+\paragraph{Korollar 6.72}
 $\mathbb{Z}$ und $K[x]$ sind faktoriell.
+
+\paragraph{Frage:} $K$ Körper. Ist $K$ faktoriell?
+$x \in R$ Primelement $\Leftrightarrow (x)$ ist Primideal ?
+Denke darüber nach!
+
+\paragraph{Bemerkung 6.73}
+Es gibt faktorielle Ringe, die keine Hauptidealbereiche sind
+\[
+  K[x_1, \dots, x_n] ~\text{ist faktoriell, aber kein Hauptidealbereich}~
+  n \geq 2, K ~ Körper
+\]
+
+\paragraph{Theorem 6.74}
+Sei $R$ ein faktorieller Ring. Dann ist auch der Polynomring $R[x]$ faktoriell.
+
+\paragraph{Korollar 6.75}
+$R$ faktorieller Ring $\Leftarrow R[x_1, \dots, x_n]$ ist faktoriell
+(insbesondere kan $R$ ein Körper sein). \\
+\textit{Beweis} \\
+\[
+  (R[x_1])[x_2] = R[x_1,x_2] \Rightarrow \text{die Aussage folgt}
+\]
+\hfill $\square$
+
+\paragraph{Definition 6.76}
+Sei $R$ ein Integritätsbereich. Betrachten wir die Menge aller Paare
+\[
+  M = \{(a,b) ~|~ a \in R ~ b \in R\backslash \{0\} \}
+\]
+Äquivalenzeralation: $(a,b) \sim (a', b') :\Rightarrow ab' = a'b$
+\[
+  Q(R) := M/\sim
+\]
+Die Äquivalenzklassen von $(a, b)$ bezeichnen wir mit $\frac{a}{b}$ sodass
+\[
+  \frac{a}{b} = \frac{a'}{b'} \Rightarrow ab' = ba'
+\]
+Man kann zeigen (Übung) dass $Q(R)$ mit
+\[
+  \frac{a}{b} + \frac{c}{d} = \frac{ad + cb}{bd} ~~\text{Addition}
+\]
+\[
+  \frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd} ~~\text{Multiplikation}
+\]
+ein Körper ist. Dieser Körper heißt Quotientenkörper. \\
+$\exists$ eine natürliche Abbildung
+\[
+  R \to Q(R), a \mapsto \frac{a}{1}
+\]
+ist ein injektiver Ringhomomorphismus.
+
+\paragraph{Beispiel 6.77}
+\begin{enumerate}
+\item $R = \mathbb{Z}, Q(R) = \mathbb{Q}$
+  \[
+    \frac{a}{b} \in \mathbb{Q} ~~ a,b \in \mathbb{Z} ~ b \neq 0
+  \]
+\item Rationale Funktionen
+  \[
+    F = \frac{A(x)}{B(x)} ~~ B(x) \neq 0 ~ A(x),B(x) \in K[x] ~ K ~\text{Körper}
+  \]
+\end{enumerate}
 
 \end{document}
