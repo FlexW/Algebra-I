@@ -1610,4 +1610,211 @@ ist ein injektiver Ringhomomorphismus.
   \]
 \end{enumerate}
 
+\paragraph{Definition 6.78}
+\begin{enumerate}
+\item Sei $R$ ein faktorieller Ring und $P$ ein Vertretersystem von Primelementen,
+d.h. aus jeder Klasse von zueinander assoziativen Primelementen enthält $P$
+genau eines. Dann $\forall a \in R\backslash\{0\}$ lässt sich in der Form
+\[
+  a = u \prod_{p\in P}p^{v_p(a)}
+\]
+wobei $u \in R^*, v_p(a) \in \Z_{\geq 0}, v_p(a)=0$ für fast alle
+$p\in P$.
+\item $Q(R) \supset R, \frac{a}{1} \leftarrow a$
+  \[
+    \forall \frac{a}{b} \in Q(R)\backslash\{0\}: \frac{a}{b} = u\prod_{p\in
+      P}p^{v_p(\frac{a}{b})}
+  \]
+\item
+  \[
+    f = \sum_{i=0}^na_ix^i \in Q(R)[x]
+  \]
+  und $v_p(f):=\us{i}{\min}v_p(a_i)$
+\end{enumerate}
+
+\paragraph{Bemerkung 6.79}
+\begin{enumerate}
+\item $f \in Q(R)[x]$ liegt in $R[x] \iff v_p(f) \geq 0$ f.a. $p\in P$
+\item $v_p: Q(R)^* \to \Z$ Gruppenhomomorphismus.
+\end{enumerate}
+
+\paragraph{Lemma 6.80} \textit{(Gauß)} Sei $R$ faktoriell, $p$ Primelement. Dann
+gilt
+\[
+  v_p(fg)=v_p(f)+v_p(g) ~~f,g \in Q(R)[x]
+\]
+\textit{Beweis}
+Die Aussage ist klar für konstante Polynome. O.B.d.A $f,g \neq 0~~f,g\in
+R[x]$(mit den Nennern multiplizieren) und $v_p(f)=0=v_p(g)$ (mit dem GGT von
+Koeff. teilen). Wir müssen also zeigen $v_p(fg)=0$
+\[
+  R[x] \longrightarrow (R/(p))[x],
+  \us{a_i\in R}{\sum} a_ix^i=h \mapsto \s{h}=\sum \s{a_i}x^i
+\]
+$(R/(p))$ ist Integritätsbereich
+\[
+  ker(\phi) = \{h\in R[x]~|~v_p(h)>0\}
+\]
+\[
+  \phi(f) \neq 0 \neq \phi(g) \Rightarrow \phi(fg) = \phi(f)\phi(g) \neq 0
+  \Rightarrow v_p(fg)=0
+\]
+\hfill $\square$
+
+\paragraph{Korollar 6.81}
+$R$ faktorieller Ring.
+\begin{enumerate}
+  \item Es sei $h\in R[x]$ ein normiertes (Leitkoeffizent = $1$) Polynom und
+    $h=f\cdot g$ eine Zerlegung in normierte Polynome $f,g \in Q(R)[x]$. Dann gilt
+    \[
+      f,g \in R[x]
+    \].
+  \item Sei $h \in R[x]$ und $h=f\cdot g$ eine Zerlegung mit $f\in R[x]$
+    primitiv
+    \[
+      \Rightarrow g \in R[x]
+    \]
+    primitiv $:= \gcd(a_i)=1$ 
+\end{enumerate}
+\textit{Beweis}
+\begin{enumerate}
+  \item $v_p(h)=0$, $v_p(f) \leq 0$ und $v_p(g) \leq 0$. Daraus folgt mit Lemma
+    6.80 wegen $v_p(h)=v_p(f)+v_p(g)$, dass $v_p(f)=v_p(g)=0 \Rightarrow f,g \in
+    R[x]$.
+  \item $\forall p\in P~~v_p(h)\geq 0, v_p(f)=0$ da $f$ primitiv. Wieder folgt
+    mit Lemma 6.80 $v_p(g)\geq 0 \Rightarrow g\in R[x]$
+  \end{enumerate}
+  \hfill $\square$
+\paragraph{Theorem 6.82} \textit{(Satz von Gauß)}
+Sei $R$ faktorieller Ring
+\begin{enumerate}
+\item Ein Polynom $q\in R[x]$ der Form
+  \begin{enumerate}[label=\alph*)]
+  \item $q$ ist Primelement in $R$.
+  \item $q$ ist primitiv in $R[x]$ und Primelement in $Q(R)[x]$
+  \end{enumerate}
+  ist Primelement in R[x].
+\item Alle Primelemente in $R[x]$ sind der Form 1a oder 1b.
+\item $R[x]$ ist faktoriell.
+\end{enumerate}
+\textit{Beweis}
+\dots
+
+\section*{Körper}
+\subsection{Die Charakteristik eines Körpers}
+
+\paragraph{Definition 7.1}
+Ein kommutativer Ring $K$ heißt \textit{Körper} wenn jedes Element $x\in
+K\backslash\{0\}=K^*$ invertierbar ist.
+
+\paragraph{Beispiel 7.2}
+Sei $K$ ein Körper dann gibt es einen eindeutigen Ringhomomorphismus
+\[
+  \psi:\Z \to K,~n\mapsto n\cdot 1
+\]
+nach Homomorphiesatz können wir dieses $\psi$ faktorisieren mit
+\[
+  \Z \os{\psi}{\to}K
+\]
+\[
+  \Z \os{\pi}{\to}\Z/ker(\psi)
+\]
+\[
+  \Z/ker(\psi)\os{\q{\psi}}{\to}K
+\]
+$\q{\psi}$ ist Monomorphismus und
+da $K$ ein Körper ist folgt das $K$ ein Integritätsbereich ist.
+\[
+  \q{\psi}:\Z/ker(\psi)\to K
+\]
+kann man als Unterring von $K$ betrachten. Daraus folgt $\Z/ker(\psi)$ ist
+Integritätsbereich. Da $(n)=ker(\psi)\subset\Z$ folgt 1. $(*)$, $(n)$ ist ein
+Primideal
+$\Rightarrow n$ ist Primzahl. 2. $(**), $$n=0 \Rightarrow ker(\psi)=(0)$.
+
+\paragraph{Definition 7.3}
+\begin{enumerate}{}
+\item Wenn $(*)$ gilt, dann sagt man, dass ($char(K)=p$) $K$ ein Körper von
+Charakteristik $p$ ist.
+\item Wenn $(**)$ gilt, dann $\dots$~$char(K)=0$ 
+\end{enumerate}
+
+\paragraph{Bemerkung 7.4}
+\[
+  char(K)=p \Rightarrow \us{p-mal}{1+1+\dots+1}=0
+\]
+
+\paragraph{Beispiel 7.5}
+\begin{enumerate}{}
+\item $\Z \os{\psi}{\to}\Q,~n\mapsto n$ folgt $ker(\psi)=(0) \Rightarrow char(\Q)=0$
+\item $\mathbb{F}_p := \Z/(p)$ wobei $p$ Primzahl ist. $\Z\os{\psi}{\to}\Z/(p)$
+  ist die kanonische Projektion und damit $ker(\psi)=(p)$ und
+  $char(\mathbb{F}_2)=p$.
+\end{enumerate}
+
+\paragraph{Lemma 7.6}
+\begin{enumerate}{}
+\item Sei $K$ ein Körper und $I\subset K$ ein Ideal $\Rightarrow I=(0)$ oder
+  $I=K$
+\item Jeder Homomorphismus von Körpern ist injektiv.
+\end{enumerate}
+\textit{Beweis} \dots
+
+\paragraph{Bemerkung 7.7}
+$F\subset K$ also $F$ ist Unterkörper von $K$. Dann folgt
+\[
+  char(F)=char(K)
+\]
+
+\paragraph{Bemerkung 7.8}
+Sei $K$ ein Körper
+\begin{itemize}{}
+\item $F_1,F_2\subset K$ Unterkörper $\Rightarrow F_1\cap F_2$ ist Unterkörper.
+\item $F_i\subset K~~i\in I \Rightarrow \bigcap_{i\in I}F_i$ ist ein Unterkörper.
+\end{itemize}
+
+\paragraph{Definition 7.9}
+Sei $P := \bigcap_{F\subset K}F\subset K$ Unterkörper, der \textit{Primkörper}
+von $K$ heißt.
+
+\paragraph{Lemma 7.10}
+Sei $K$ ein Körper und $P\in K$ ein Primkörper.
+\begin{enumerate}{}
+\item $char(K)=0\Leftrightarrow P=\Q$
+\item $char(K)=p\Leftrightarrow P=\mathbb{F}_p$
+\end{enumerate}
+\textit{Beweis} \dots
+
+\paragraph{Korollar 7.11}
+Sei $L\to K$ ein Homomorphismus von Körpern. Dann gilt
+\begin{enumerate}{}
+\item $char(L)=char(K)$
+\item Primkörper werden identifiziert
+\end{enumerate}
+\textit{Beweis} \dots
+
+\subsection{Körpererweiterungen}
+
+\paragraph{Definition 7.12}
+$K\subset L$ Unterkörper.
+\begin{enumerate}{}
+\item Man sagt, dass $L$ eine Körpererweiterung von $K$ ist. (Bezeichnung: $L/K$)
+\item Man kann $L$ als $K$-Vektorraum betrachten. $\dim_KL$ wird Grad von der
+  Körpererweiterung genannt und mit $[L:K]$ bezeichnet.
+\item $K/K$ heißt endlich gdw. $[L:K]<\infty$
+\end{enumerate}
+
+\paragraph{Beispiele 7.13}
+\begin{enumerate}{}
+\item $\R \subset \C~~\dim_\R\C=2$
+\item $\Q\subset\R$ $\dim_\Q\R = \infty$
+\end{enumerate}
+
+\paragraph{Lemma 7.14}
+Es seien $F\subset K\subset L$ endliche Körper. Dann gilt
+\[
+  [L:F]=[L:K]\cdot[K:F]
+\]
+\textit{Beweis} \dots
+
 \end{document}
