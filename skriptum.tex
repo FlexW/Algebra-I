@@ -244,7 +244,18 @@ Nenne $[x]_R$ Äquivalenzklasse von $x$ bezüglich $R$. Mit Eigenschaften:
 \item $\forall x,y \in R: [x]_R = [y]_R \Leftrightarrow y \in [x]_R$
 \item $X$ zerfällt in disjunkte Vereinigung der Äquivalenzklassen.
 \end{enumerate}
-\textit{Beweis} Übung.
+\paragraph{Beweis}
+\begin{enumerate}{}
+\item Ist nichts zu zeigen.
+\item Da $R$ Reflexiv gilt für beliebiges $x \in X \Rightarrow x \in [x]_R$.
+  Damit gilt bereits $X = \bigcup_{x \in X}[x]_{R}$. Es ist noch zu zeigen dass
+  für beliebige $x_1,x_2 \in X: [x_1]=[x_2]$ oder $[x_1]\cap [x_2] = \emptyset$.
+  Sei dazu $y \in [x_1]\cap [x_2]$. Somit gilt $yRx_1$ und $yRx_2$ und da $R$
+  reflexiv und symmetrisch ist gilt auch $x_1Rx_2$. Damit muss aber auch $x_1
+  \in [x_2]$ und $x_2 \in [x_1]$ sein. Damit ist $[x_1]=[x_2]$. Daraus folgt die
+  Behauptung.
+  \hfill $\square$
+\end{enumerate}
 
 \paragraph{Definition 4.6} Die Menge der Äquivalenzklassen wird mit $X/R$ oder
 $X/\sim$ bezeichnet. Man nennt $X/\sim$ Quotient bzgl. $\sim$.
@@ -260,14 +271,20 @@ invertierbar ist.
 
 \paragraph{Lemma 5.2} Sei $M$ ein Monoid.
 \[
-  M^\star = \{ x \in M ~|~ x ~\text{invertierbar} \} \subset M \Rightarrow M^\star
+  M^* = \{ x \in M ~|~ x ~\text{invertierbar} \} \subset M \Rightarrow M^*
   ~\text{ist Gruppe}
 \]
-\textit{Beweis} $x,y \in M^\star, x \circ y \overset{?}{\in} M^\star$
+\paragraph{Beweis}
+Nach Definition ist eine Gruppe ein Monoid in dem jedes Element invertierbar
+ist. Für beliebiges $m \in M^*: m^{-1} \in M$ laut Definition von $M^*$. Es
+bleibt noch zu zeigen dass für $m_1,m_2\in M$ auch $m_1 \circ m_2 \in M$. Da
+$m_1^{-1}, m_2^{-1} \in M \Rightarrow m_2^{-1} \circ m_1^{-1} = (m_1 \circ
+m_2)^{-1}$ und somit
 \[
-  \left( x \circ y \right) \circ \left( y^{-1} \circ x^{-1}\right) = e
+  (m_1 \circ m_2)(m_1 \circ m_2)^{-1} = e.
 \]
-
+Daraus folgt die Behauptung.
+\hfill $\square$
 \paragraph{Beispiele 5.3}
 \begin{enumerate}
 \item $G = \{e\}$ ist Gruppe.
@@ -285,12 +302,13 @@ invertierbar ist.
 \item $x \circ y = x \circ z \Rightarrow y = z$
 \item $y \circ x = z \circ x \Rightarrow y = z$
 \end{enumerate}
-\textit{Beweis}
+\paragraph{Beweis}
 \begin{enumerate}
-\item Gelte $x \circ y = x \circ z$ dann folgt $x^{-1} \circ x \circ z
-  \Rightarrow y = z \hfill \square$
+\item Gelte $x \circ y = x \circ z$ dann folgt $x^{-1} \circ x \circ z = x^{-1}
+  \circ x \circ y \Rightarrow y = z$
 \item analog
 \end{enumerate}
+\hfill $\square$
 
 \paragraph{Definition 5.5} Sei $G$ eine Gruppe, dann heißt $G$ kommutativ oder
 abelsch $\Leftrightarrow \forall x,y \in G: x \circ y = y \circ x$
@@ -321,6 +339,14 @@ ein Gruppenhomomorphismus gdw.
 \item $\forall a,b \in G: f(a \circ b) = f(a) \circ f(b)$
 \item $f(e_G) = e_H$
 \end{enumerate}
+\paragraph{Beweis}
+Zu 2.:
+\[
+  f(e_G)f(e_G) = f(e_Ge_G) = f(e_G)
+  \Rightarrow \exists h \in H: h \cdot h = h
+  \Leftrightarrow \ub{h^{-1} \cdot h}{= e_H} \cdot h = \ub{h^{-1} \cdot h}{=e_H}
+  \Leftrightarrow h = e_H
+\]
 
 \paragraph{Definition 5.9}
 \begin{enumerate}
@@ -339,6 +365,7 @@ Sei $f: G \to H \in Hom(G,H)$
     im(f) = \{y \in H ~|~ \exists x \in G: f(x) = y\} \subset H
   \end{rcases} \text{Untergruppe}
 \]
+\paragraph{Beweis}
 
 \paragraph{Beispiel 5.11}
 ~\\ $det: GL_n(K) \to K^\star$ mit $ker(det) = \{A \in GL_n(K) ~|~ det(A) = 1\} =
@@ -1817,4 +1844,244 @@ Es seien $F\subset K\subset L$ endliche Körper. Dann gilt
 \]
 \textit{Beweis} \dots
 
+\paragraph{Definition 7.15}
+Sei $L/K$ eine Körpererweiterung
+\begin{enumerate}
+\item $\alpha\in L ~\text{heißt algebraisch}\iff \exists f(x)\in K[x],x\neq 0: f(\alpha)=0$
+\item Ansonsten heißt $\alpha$ transzendent.
+\item $L/K$ heißt algebraisch $\iff \forall \alpha\in L$ algebraisch über $K$ ist.
+\end{enumerate}
+
+\paragraph{Beispiel 7.16}
+\begin{enumerate}{}
+\item $\C/\R~~i\in\C$ ist $i$ algebraisch?
+\item $\R/\Q~~\alpha =\sqrt{2}$ ist algebraisch über $\Q$
+\item $\pi\in\R$ ist transzendent über $\Q$.
+\end{enumerate}
+
+\paragraph{Lemma 7.17}
+Jede endliche Körpererweiterung $L/K$ ist algebraisch. \\
+\textit{Beweis}
+\dots
+
+\paragraph{Definition 7.18}
+$L/K$ Körpererweiterung. $\alpha\in L$
+\begin{enumerate}{}
+\item  $\psi_\alpha:K[x]\to L,~f(x)\mapsto f(\alpha) ~~~Im(\psi_\alpha)=K[\alpha]$
+\item $L$ ist Integritätsbereich $\Rightarrow K[\alpha]$ ist Integritätsbereich.
+\item Quotientenkörper von $K[\alpha]$ bezeichnen wir mit $K(\alpha)$.
+\item $\alpha$ algebraisch$/K \Rightarrow \psi_\alpha$ ist nicht injektiv.
+  \[
+    Ker(\psi_\alpha)=I=(p(x))=p(x)K[x]
+  \]
+\item $K[\alpha]=k[x]/(p(x))$ (nach Homomorphiesatz). $K[\alpha]$
+  Integritätsbereich $\Rightarrow (p(x))$ Primideal $\Rightarrow p(x)$
+  irreduzibel. $p(x)$ ist eindeutig bis auf Multiplikation mit $u\in K^*$
+  definiert. $\Rightarrow$ man kann $p(x)$ normiert vorraussetzen. $p(x)$
+  Minimalpolynom von $\alpha$ über $K$.
+\end{enumerate}
+
+\paragraph{Beispiel 7.19}
+\begin{enumerate}{}
+\item $\C/\R~~i\in\C$
+\end{enumerate}
+
+\paragraph{Lemma 7.20}
+$L/K$ Körpererweiterung, $\alpha\in L$ algebraisch$/K$, $p(x)\in K[x]$ das
+Minimalpolynom von $\alpha$. Dann gilt
+\begin{enumerate}{}
+\item $K[\alpha]=K(\alpha)$
+\item $[K(\alpha):K]=\deg(p(x))$
+\end{enumerate}
+\textit{Beweis} \dots
+
+\paragraph{Definition 7.21}
+$L/K$ Körpererweiterung.$\alpha_1,\dots,\alpha_n\in L$
+\begin{enumerate}{}
+
+\item $\psi_\alpha: K[x_1,\dots,x_n]\to L,~f(x_1,\dots,x_n)\mapsto f(\alpha,\dots,\alpha_n)$~~
+  $Im(\psi_\alpha)=K[\alpha_1,\dots,\alpha_n]$ Integritätsbereich.
+  $Q(K[\alpha_1,\dots,\alpha_n])=:K(\alpha_1,\dots,\alpha_n)$. $K\subset
+  K[\alpha_1,\dots,\alpha_n]\subset K(\alpha_1,\dots,\alpha_n)$
+\item $L/K$ heißt endlich erzeugt $\Leftrightarrow \exists
+  \alpha_1,\dots,\alpha_n\in L: L=K(\alpha_1,\dots,\alpha_n)$.
+\end{enumerate}
+
+\paragraph{Lemma 7.22}
+Sei $L=K(\alpha_1,\dots,\alpha_n)$, mit $\alpha_i$ algebraisch$/K \Rightarrow
+L/K$ ist endlich.
+
+\paragraph{Theorem 7.23}
+$F\subset K\subset L$ Körpererweiterung
+\[
+  L/F ~\text{ist algebraisch} \Leftrightarrow L/K~\text{und}~ K/F~\text{sind algebraisch.}
+\]
+
+\paragraph{Korollar 7.24}
+$L/K$ Körpererweiterung
+\[
+  L_{alg}=\{\alpha\in L ~|~ \alpha~alg./K\} \Rightarrow L_{alg}~\text{ist ein Unterkörper.}
+\]
+
+\subsection{Algebraischer Abschluss eines Körpers}
+
+\paragraph{Lemma 7.25}
+Sei $f(x)\in K[x]$ ein Polynom über $K$. Es existiert eine endliche
+Körpererweiterung $L/K$, in welchem $f(x)$ eine Wurzel hat.
+
+\paragraph{Beispiel/Bemerkung 7.26}
+\begin{enumerate}{}
+\item $K=\R~~f(x)=x^2+1$
+\item $K=\Q~~x^2-2$
+\end{enumerate}
+
+\paragraph{Korollar 7.27}
+$f_1(x),\dots,f_n(x)\in K[x]$. Es ex. eine endliche Körpererweiterung, in
+welcher jedes $f_i(x)$ eine Wurzel hat.
+
+\paragraph{Definition 7.28}
+Ein Körper $K$ heißt algebraisch abgeschlossen, wenn jedes Polynom $f(x)\in
+K[x], \deg(f)\geq 1$ eine Wurzel in $K$ hat.
+
+\paragraph{Bemerkung 7.29}
+Äquivalent: $K$ algebraisch abgeschlossen $\Leftrightarrow \forall$ normierte
+Polynome $f(x)\in K[x]$ sich als Produkt $f(x)=(x-\alpha_1)\dots(x-\alpha_n)$.
+
+\paragraph{Beispiel 7.28}
+\begin{enumerate}{}
+\item $\R$ nicht algebraisch abgeschlossen (z.B. $f(x)=x^2+1$)
+\item $\C$ algebraisch abgeschlossen.
+\item Kann ein Körper mit endlich vielen Elementen algebraisch abgeschlossen sein?
+\end{enumerate}
+
+\paragraph{Theorem 7.29}
+Jeder Körper $K$ lässt sich in einem algebraisch abgeschlossenen Körper
+einbetten. D.h. $\exists L/K, L$ algebraisch abgeschlossenen.
+
+\paragraph{Korollar 7.30}
+$\forall$ Körper $K$ existiert ein algebraisch abgeschlossener Körper $\q{K}$,
+sodass $\q{K}/K$ algebraisch ist.
+
+\paragraph{Definition 7.31}
+$\q{K}$ heißt algebraischer Abschluss von $K$.
+
+\paragraph{Bemerkung 7.32}
+Alle algebraische Abschlüsse sind isomorph.
+
+\paragraph{Beispiel 7.33}
+$K=\R$, $\q{\R}=\C$
+
+\subsection{Fortsetzung von Homomorphismen}
+
+\paragraph{Notation 7.34}
+$\sigma : K \to L$ Homomorphismus von Körpern und $a^\sigma := \sigma(a)$ und
+$f^\sigma(x) := \sum a_i^\sigma x^i$ wobei $f(x) \in K[x]$.
+
+\paragraph{Definition 7.35}
+$K'/K, L'/L$ Körpererweiterungen und $\sigma : K \to L$ Homomorphismus. Man
+sagt, dass $\tau : K' \to L'$ eine Fortsetzung von $\sigma$ ist, wenn gilt $\tau
+|_K = \sigma$. 
+
+\paragraph{Lemma 7.36}
+$K'/K, L'/L$ Körpererweiterungen und $\sigma : K \to L$ Homomorphismus. Wenn
+gilt $K' = K(\alpha)$ mit $\alpha$ algebraisch über $K$, dann ist die Menge von
+Homomorphismen $\tau : K' \to L'$, die $\sigma$ fortsetzen, in einer Bijektion
+mit der Menge von Nullstellen von Polynomen $p^\sigma(x)$ in $L'$, wobei $p(x)
+\in K[x]$ das Minimalpolynom von $\alpha$ ist.
+
+\paragraph{Korollar 7.37}
+Die Anzahl von solchen Fortsetzungen ist nicht größer als $[K(a):K] = \deg(p(x))$
+
+\paragraph{Definition 7.38}
+$K'/K, K''/K$ Körpererweiterungen. Man sagt, dass $\sigma : K' \to K''$ ein
+Homomorphismus von Körpern über $K$ ist (oder ein $K$-Homomorphismus), wenn er
+eine Fortsetzung von $K \os{id}{\to} K$ ist.
+
+\paragraph{Lemma 7.39}
+Sei $L/K$ eine algebraische Körpererweiterung und $\sigma: L \to L$ ein
+$K$-Homomorphismus. Dann ist $\sigma$ ein Automorphismus.
+
+\paragraph{Theorem 7.40}
+Sei $K'/K$ eine algebraische Körpererweiterung und $\sigma: K \to L$ ein
+Homomorphismus mit $L$ algebraisch abgeschlossen $(L=\q{L})$. Dann ex. eine
+Fortsetzung $\sigma': K' \to L$.
+
+\paragraph{Korollar 7.41}
+Seien $\q{K}'/K$ und $\q{K}''/K$ zwei algebraische Abschlüsse von $K$. Dann sind
+$\q{K}', \q{K}''$ isomorph über $K$.
+
+\subsection{Zerfällungskörper}
+Sei $K$ ein Körper und $f(x) \in K[x]$
+
+\paragraph{Definition 7.42}
+Ein Körper $K \subset L$ hei\t Zerfällungskörper von $f(x)$, wenn $f(x)$ lässt
+sich als Produkt von linearen Faktoren schreiben $f(x)=c(x-\alpha_1) \dots
+(x-\alpha_n)$ und es gilt $L = K(\alpha_1, \dots, \alpha_n)$.
+
+\paragraph{Beispiele 7.43}
+\begin{enumerate}{}
+\item $x^2 + 1 \in \R[x]$ $L=\C$ und $K=\R$ dann
+  $x^2+1=(x-i)(x+i)$ und $\R(i)=\C$.
+\item Ist $\Q(\sqrt[3]{2}) \subset \R$ Zerfällungskörper von $x^3-2$? nein.s
+\end{enumerate}
+
+\paragraph{Lemma 7.44}
+\begin{enumerate}{}
+\item Jeder algebraischer Abschluss $\q{K}$ von $K$ enthält einen eindeutigen
+  Körper $L$, welcher der Zerfällungskörper von $f(x)$ ist.
+\item Jede Einbettung über $K$ $\sigma:L \to \q{K}$ ist ein Automorphismus von
+  $L$
+\item Jede zwei Zerfällungskörper sind isomorph.
+\end{enumerate}
+
+\paragraph{Definition 20.4}
+Sei $\{f_i(x)\}_{i \in I}$ eine Familie von Polynomen in $K[x]$. Der
+Zerfällungskörper von $\{f_i(x)\}_{i \in I}$ ist ein Körper $K \subset L$,
+sodass alle $f_i(x)$ lassen sich als Produkt von linearen Faktoren schreiben und
+$L$ durch alle Nullstellen von $f_i(x)$ erzeugen.
+
+\paragraph{Lemma 20.5}
+\begin{enumerate}{}
+\item Jeder algebraische Abschluss $\q{K}$ von $K$ enthält einen eindeutigen
+  Körper $L$, welcher Zerfällungskörper von $\{f_i(x)\}_{i \in I}$ ist.
+\item \dots
+\item \dots
+\end{enumerate}
+
+\subsection{Normale Körpererweiterungen}
+
+\paragraph{Definition 20.6}
+Sei $L/K$ eine algebraische Körpererweiterung, $L \subset \q{K}$. $L/K$ heißt
+normal $\iff$ $\forall \sigma: L \to \q{K}$ über $K$ ist ein Automorphismus.
+
+\paragraph{Beispiel 20.7}
+\begin{enumerate}{}
+\item $K=\R \subset L = \C = \q{K} = \C$ ist $\C/\R$ normal? Ja.
+\item $K=\Q \subset L = \Q(\sqrt[3]{2}) \subset \q{\Q} \subset \C$? Nein.
+\end{enumerate}
+
+\paragraph{Lemma 20.8}
+$L/K$ ist normal $\Leftrightarrow$ Jedes irreduzible Polynom $f(x) \in K[x]$,
+das eine Wurzel in $L$ hat, lässt sich über $L$ als Produkt von linearen
+Faktoren schreiben.
+
+\paragraph{Lemma 20.4}
+$L/K$ ist normal $\Leftrightarrow L$ ist ein Zerfällungskörper einer Familie von Polynomen.
+
+\subsection{Intermezzo: Endliche Körper}
+
+$p$ Primzahl und $K$ Körper mit $char(K)=p$. Daraus folgt es gibt eine
+eindeutige Einbettung von $\mathbb{F}_p \to K$.
+\paragraph{Lemma 20.5}
+Die Abbildung $\phi: K \to K,~x \mapsto x^p$ ist ein Homomorphismus über $\mathbb{F}_p$.
+
+\paragraph{Lemma 20.6}
+Sei $L$ ein Körper mit $q$ Elementen. Dann $\forall \alpha \in L: \alpha^q -
+\alpha = 0$.
+
 \end{document}
+
+%%% Local Variables:
+%%% ispell-check-comments: nil
+%%% ispell-local-dictionary: "german8"
+%%% End:
