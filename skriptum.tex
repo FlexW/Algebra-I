@@ -23,6 +23,9 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\im}{\operatorname{im}}
 
 \setcounter{MaxMatrixCols}{20}
 
@@ -333,7 +336,7 @@ Untergruppe gdw.
 \subsection{Gruppenhomomorphismen}
 \label{subsec:gruppenhomomorphismen}
 
-\paragraph{Definition 5.8} Seien $G, H$ Gruppen und $f: G \to H$. Dann ist $f$
+\paragraph{Definition und Lemma 5.8} Seien $G, H$ Gruppen und $f: G \to H$. Dann ist $f$
 ein Gruppenhomomorphismus gdw.
 \begin{enumerate}
 \item $\forall a,b \in G: f(a \circ b) = f(a) \circ f(b)$
@@ -357,18 +360,54 @@ Zu 2.:
 \item Automorphismus = bijektiver Endomorphismus = $Aut(G)$
 \end{enumerate}
 
-\paragraph{Definition 5.10}
-Sei $f: G \to H \in Hom(G,H)$
+\paragraph{Lemma 5.9.1}
+Sei $G$ eine Gruppe und $f:G \to H$ ein Gruppenhomomorphismus dann gilt
 \[
-  \begin{rcases}
-    ker(f) = \{x \in G ~|~ f(x) = e\} \subset G \\
-    im(f) = \{y \in H ~|~ \exists x \in G: f(x) = y\} \subset H
-  \end{rcases} \text{Untergruppe}
+  \forall g \in G: f(g^{-1}) = f(g)^{-1}
 \]
 \paragraph{Beweis}
+Betrachte dazu
+\[
+  f(g)f(g^{-1}) = f(gg^{-1}) = f(e_G) = e_H 
+\]
+$f(g^{-1})$ besitzt also genau die Eigenschaft des Inversen und da in einer
+Gruppe das Inverse eindeutig bestimmt ist
+($g^{-1}=g^{-1}e_G=g^{-1}gg'^{-1}=g'^{-1}$), folgt die Behauptung.
+\hfill $\square$
+
+\paragraph{Definition und Lemma 5.10}
+Sei $f: G \to H \in Hom(G,H)$
+
+\begin{align}
+  &\ker(f) := \{x \in G ~|~ f(x) = e\} \subset G \\
+  &\im(f) := \{y \in H ~|~ \exists x \in G: f(x) = y\} \subset H
+\end{align}
+Wobei $\ker(f)$ und $\im(f)$ Untergruppen sind.
+\paragraph{Beweis}
+\begin{enumerate}{}
+  \item Wegen $f(e_G)=e_H$ ist $e_G \in \ker(f)$. Seien $g,g' \in \ker(f)$ dann
+    gilt
+    \[
+      f(gg') = f(g)f(g') = e_He_H = e_H
+    \]
+    Es bleibt noch zu zeigen dass die Inversen in $\ker(f)$ enthalten sind. Für
+    $g^{-1} \in \ker(f)$ ist
+    \[
+      f(g^{-1}) = f(g)^{-1} = e_H^{-1} = e_H
+    \]
+  \item Es ist $e_H=f(e_G) \in \im(f)$. Seien nun $g,g' \in G$ dann gilt
+    \[
+      f(g)f(g') = f(gg') \in H.
+    \]
+    Ebenso ist
+    \[
+      f(g)^{-1} = f(g^{-1}) \in H.
+    \]
+    \hfill $\square$
+\end{enumerate}
 
 \paragraph{Beispiel 5.11}
-~\\ $det: GL_n(K) \to K^\star$ mit $ker(det) = \{A \in GL_n(K) ~|~ det(A) = 1\} =
+~\\ $\det: GL_n(K) \to K^*$ mit $\ker(\det) = \{A \in GL_n(K) ~|~ \det(A) = 1\} =
 SL_n(K)$
 
 \paragraph{Definition 5.12} Seien $G_1, G_2$ Gruppen und $A = G_1 \times G_2 =
@@ -378,7 +417,7 @@ SL_n(K)$
   h_2) ~\text{wobei}~ g_1 \circ h_1 \in G_1, g_2 \circ h_2 \in G_2
 \]
 definiert eine neue Gruppe. \\
-\textit{Beweis}
+\paragraph{Beweis}
 \begin{itemize}
 \item Assoziativität folgt aus Assoziativität von $G_1$ und $G_2$
 \item $(e_{G1}, e_{G2}) = e_A$
