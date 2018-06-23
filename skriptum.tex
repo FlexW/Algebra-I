@@ -732,6 +732,21 @@ Wegen Surjektivität von $\pi$ ist $\glqq \supset \grqq$ klar. Für $\glqq \subs
                          &\iff \exists u \in U: gN = uN = \pi(u) \\
                          &\iff \exists n \in N: g = un
 \end{align*}
+Es bleibt noch zu zeigen: $U \in \mathcal{U}$ ist Normalteiler in $G \Leftrightarrow a(U)
+\subset G/N$ ist Normalteiler. Es gilt für $U \in \mathcal{U}$
+\begin{align*}
+  U \subset G~\text{Normalteiler} &\iff \forall g \in G: gUg^{-1} = U \\
+                                  &\implies \forall gN = \pi(g) \in G/N: (gN)\pi(U)(gN)^{-1}
+                                    = [g]\pi(U)[g]^{-1} =\pi(gUg^{-1}) = \pi(U).
+\end{align*}
+Umgekehrt sei $V \in \mathcal{V}$
+\begin{align*}
+  V \subset G/N~\text{Normalteiler} &\iff gN \in G/N: (gN)V(gN)^{-1} = V \\
+                                    &\implies \forall g \in G, \forall u \in \pi^{-1}(V):
+                                      \pi(gug^{-1}) = \pi(g)\pi(u)\pi(g)^{-1} \in V
+\end{align*}
+Was genau die Normalteilereigenschaft von $\pi^{-1}(V)$ zeigt.
+\hfill $\square$
 
 \paragraph{Notation 5.33} Ist $G$ eine Gruppe, $N \in G$ ein Normalteiler und $H
 \subset G$ Untergruppe, dann setze $N \cdot H = \{n \in H, h \in H\}$. $N \cdot
@@ -754,7 +769,38 @@ H$ ist eine wohldefinierte Untergruppe.
   \]
   .
 \end{enumerate}
-\textit{Beweis} $\dots$
+\paragraph{Beweis}
+\begin{enumerate}{}
+\item Dass $N \subset N \cdot H$ Normalteiler ist, ist klar. Betrachte den
+  Gruppenhomomorphismus
+  \[
+    f: H \longrightarrow N \cdot H \longrightarrow N \cdot H/N,
+    ~h \longmapsto e_Gh \longmapsto (e_Gh)N. 
+  \]
+  Dieser ist surjektiv. Denn für jedes $(nh)N$ gilt
+  \[
+    (nh)N = (ne_G)N \cdot (he_G)N = (he_G)N = f(h).
+  \]
+  Nach dem Homomorphiesatz gilt wegen
+  \[
+    \ker(f) = \{h \in H ~|~ hN = (e_Gh)N = e_GN \in N \cdot H/N\} = \{h \in H |
+    h \in N\} = N \cap H
+  \]
+  die Behauptung.
+
+\item $N/H \subset G/H$ Normalteiler ist klar nach Korrespondenzsatz, da gilt $N
+  \subset G$ Normalteiler. Betrachte den Gruppenhomomorphismus
+  \[
+    f: G \longrightarrow G/H \longrightarrow (G/H)/(N/H),~
+    g \longmapsto gH \longmapsto [gH].
+  \]
+  Dieser ist offensichtlich surjektiv. Nach dem Homomorphiesatz genügt
+  \[
+    \ker(f) = \{g \in G ~|~ [gH] = [e_GH]\} = \{g \in G ~|~ gH \in N/H\} = N.
+  \]
+  Somit ist die Behauptung erfüllt.
+\end{enumerate}
+\hfill $\square$
 
 \subsection{Zyklische Gruppen}
 \label{subsec:zyklischegruppen}
