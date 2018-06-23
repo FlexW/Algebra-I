@@ -691,6 +691,42 @@ eine Bijektion, wobei
 Es gilt zudem $U \in \mathcal{U}$ ist Normalteiler in $G \Leftrightarrow a(U)
 \subset G/N$ ist Normalteiler.
 \paragraph{Beweis}
+$\pi$ ist ein Gruppenhomomorphismus somit ist $\pi(U) \subset G/N$ eine
+Untergruppe für alle $U \in \mathcal{U}$, somit ist $a$ wohldefiniert. Zur
+Wohldefiniertheit von $b$ ist zu zeigen dass $\pi^{-1}(V) \subset G$ auch für
+alle $V \in \mathcal{V}$ eine Untergruppe ist. \\
+Es ist $e_GN \in V$ f.a. $V \in \mathcal{V}$. Damit gilt
+\[
+  N = \pi^{-1}(e_GN) \subset \pi^{-1}(V).
+\]
+Seien nun $g,h \in \pi^{-1}(V)$ beliebig. Es ist zu zeigen dass $gh \in
+\pi^{-1}(V)$. Dazu
+\[
+  \pi(g)\pi(h)=\pi(gh).
+\]
+Damit ist $gh \in \pi^{-1}(V)$. Weiter ist
+\[
+  \pi(e_G)=e_GN.
+\]
+Also auch $e_G \in \pi^{-1}(V)$. Die Inversen sind auch dabei, denn es gilt für
+beliebges $g \in \pi^{-1}(V)$
+\[
+  \pi(g^{-1})=\pi(g)^{-1}.
+\]
+Somit ist $N \subset \pi^{-1}(V)$ eine Untergruppe mit Normalteiler $N$ wie gefordert.
+Es bleibt noch zu zeigen dass $a \circ b = id_{\mathcal{V}}$ und $b \circ a =
+id_{\mathcal{U}}$. Für dass erste ist zu zeigen
+\[
+  a \circ b(V) = \pi(\pi^{-1}(V)) = V.
+\]
+Dabei ist klar dass $\pi(\pi^{-1}(V)) \subset V$ gilt, denn das gilt für jede
+Abbildung. Da $\pi$ surjektiv ist, gilt auch $\pi(\pi^{-1}(V)) \supset V$. Somit
+$\pi(\pi^{-1}(V)) = V$. Bleibt noch zu zeigen
+\[
+  b \circ a(U) = \pi^{-1}(\pi(U)) = U.
+\]
+Wegen Surjektivität von $\pi$ ist $\glqq \supset \grqq$ klar. Für $\glqq \subset
+\grqq$: Sei $g \in \pi^{-1}(\pi(U))$
 
 \paragraph{Notation 5.33} Ist $G$ eine Gruppe, $N \in G$ ein Normalteiler und $H
 \subset G$ Untergruppe, dann setze $N \cdot H = \{n \in H, h \in H\}$. $N \cdot
