@@ -726,7 +726,12 @@ $\pi(\pi^{-1}(V)) = V$. Bleibt noch zu zeigen
   b \circ a(U) = \pi^{-1}(\pi(U)) = U.
 \]
 Wegen Surjektivität von $\pi$ ist $\glqq \supset \grqq$ klar. Für $\glqq \subset
-\grqq$: Sei $g \in \pi^{-1}(\pi(U))$
+\grqq$: Es gilt
+\begin{align*}
+  g \in \pi^{-1}(\pi(U)) &\iff gN = \pi(g) \in \pi(U) \\
+                         &\iff \exists u \in U: gN = uN = \pi(u) \\
+                         &\iff \exists n \in N: g = un
+\end{align*}
 
 \paragraph{Notation 5.33} Ist $G$ eine Gruppe, $N \in G$ ein Normalteiler und $H
 \subset G$ Untergruppe, dann setze $N \cdot H = \{n \in H, h \in H\}$. $N \cdot
