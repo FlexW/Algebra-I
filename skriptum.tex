@@ -464,15 +464,7 @@ mit folgenden Eigenschaften:
 \[
   \rho: G \to Aut(X),~ g \mapsto \rho(g)
 \]
-\paragraph{Beweis}
-Es gilt zunächst
-\[
-  \sigma_a\sigma_b=(ax)(bx)
-\]
-Sei $\rho(a)=\sigma_a, \rho(b)=\sigma_b$
-\[
-  \rho(a)\rho(b)=\sigma_a\sigma_b=\sigma_{ab}=\rho(ab)
-\]
+\paragraph{Beweis} Steh aus.
 
 \paragraph{Definition 5.17} Sei $G$ Gruppe und $X$ Menge mit $G \circlearrowleft
 X$ dabei bezeichnet $\circlearrowleft$ eine Gruppenwirkung.
@@ -519,28 +511,60 @@ Untergruppe von $G$ dann gilt:
 \[
   |G| = |H| \cdot |G/H|
 \]
-\textit{Beweis} $\dots$
-
-\paragraph{Lemma 5.24} Sei $G \circlearrowleft X$ transitiv. $\forall p \in X$
-kann man eine surjektive Abbildung
+\paragraph{Beweis}
+Die Anzahl der Rechtsnebenklassen entspricht der Anzahl der Linksnebenklassen.
+Die Gruppe $G$ zerfällt in eine disjunkte Vereinigung von Nebenklassen
+$n=|G/H|$, wobei es zwischen zwei Nebenklassen immer eine Bijektion gibt. Somit
+sind alle Nebenklassen gleichmächtig, mit Mächtigkeit $r=|H|$. Damit gilt
 \[
-  f_p: G \to X,~g \mapsto g\cdot p
+  r \cdot n = |G|,
 \]
-finden, die eine Bijektion $G/Stab(p) \to X$ induziert. \\
-\textit{Beweis} $\dots$
+und damit die Behauptung.
+\hfill $\square$
+
+\paragraph{Lemma 5.24} \textit{Betrachten wir eine transitive Wirkung von $G$
+  auf $X$. Für jedes $P \in X$ können wir eine sujektive Abbildung definieren}
+\[
+  f_P: G \to X,~~g \mapsto g \cdot P,
+\]
+\textit{die eine Bijektion}
+\[
+  \phi: G/Stab(P) \to X,~~gStab(P) \mapsto g \cdot P
+\]
+\textit{induziert.}
+\paragraph{Beweis}
+Da die Wirkung transitiv ist, muss die Abbildung $f_P$ surjektiv sein und somit
+$\phi$. Für die Injektivität betrachte folgende Gleichung mit $g_1,g_2 \in G$
+\[
+  g_1 \cdot P = g_2 \cdot P = P \iff g_2^{-1} \cdot g_1 \cdot P = P \implies
+  g_2^{-1}g_1 \in Stab(P).
+\]
+Damit werden in $\phi$ alle Elemente in $g_1, g_2 \in G$ mit $g_1 \neq g_2$ für
+die galt $f_P(g_1)=f_P(g_2)=P$ zusammengefasst zu einem Element. Damit ist die
+Abbildung $\phi$ injektiv.
+\hfill $\square$
 
 \subsection{Normalteiler}
 \label{subsec:normalteiler}
 
 \paragraph{Lemma 5.25} Sei $H \subset G$ Untergruppe. Die folgenden Aussagen
 sind äquivalent:
-\begin{itemize}
+\begin{enumerate}
 \item $\forall g \in G: gHg^{-1} = H$
 \item $\forall g \in G \forall h \in H: ghg^{-1} \in H$
 \item $\forall g \in G: gH = Hg$
 \item $H$ Linksnebenklassen = $H$ Rechtsnebenklassen
+\end{enumerate}
+\paragraph{Beweis}
+\begin{itemize}{}
+\item 3. $\iff$ 4. Ist klar.
+\item 1. $\iff$ 2. Ebenfalls klar.
+\item 1. $\iff$ 4. Betrachte die Gleichung
+  \[
+    gH = Hg \iff g^{-1}gH=g^{-1}Hg \iff H = g^{-1}Hg
+  \]
 \end{itemize}
-\textit{Beweis} $\dots$
+\hfill $\square$
 
 \paragraph{Definition 5.26} Eine Untergruppe $H \subset G$ heißt \textit{normal}
 oder \textit{Normalteiler} gdw. eine der Aussagen aus Lemma 5.25 gilt.
@@ -551,15 +575,22 @@ oder \textit{Normalteiler} gdw. eine der Aussagen aus Lemma 5.25 gilt.
 \item $SL_n(K) \subset GL_n(K)$ ist normal.
 \item $
   \begin{pmatrix}
-    \star & \star \\
-    0 & \star
+    * & * \\
+    0 & *
   \end{pmatrix} \subset GL_2(K)
   $ ist nicht normal.
 \end{enumerate}
 
 \paragraph{Lemma 5.28} Sei $\psi: G \to H$ ein Gruppenhomomorphismus dann folgt
-$ker(\psi)$ ist Normalteiler. \\
-\textit{Beweis} $\dots$
+$\ker(\psi)$ ist Normalteiler.
+\paragraph{Beweis}
+Wissen bereits das $\ker(\psi)$ Untergruppe ist. Betrachte dann die Gleichung
+mit $g \in G, h \in \ker(\psi)$
+\[
+  \psi(ghg^{-1})=\psi(g)\ub{\psi(h)}{=e_H}\psi(g^{-1})
+  =\psi(g)\psi(g^{-1})=\psi(gg^{-1})=\psi(e_G)=e_H \in \ker(\psi)
+\]
+\hfill $\square$
 
 \subsection{Faktorgruppen}
 \label{subsec:faktorgruppen}
@@ -572,8 +603,16 @@ Verknüpfung
 $G/N$ zu einer Gruppe mit neutralem $eN$ und Inversem $g^{-1}N$ zu $gN \in G/N$.
 $G/N$ wird Faktorgruppe oder Quotient von $G$ bzgl. $N$ genannt.
 \paragraph{Bemerkung 5.28} Die Assoziativität der Verknüpfung ist klar. Auserdem
-ist die Verknüpfung wohldefiniert. \\
-\textit{Beweis} $\dots$
+ist die Verknüpfung wohldefiniert.
+\paragraph{Beweis}
+Da $N$ Normalteiler ist, gilt $\forall g \in G: gN=Ng$, also insbesondere gibt
+es für jedes $n \in N$ ein $\s{n} \in N$ mit $gn=\s{n}g$. Genauer ist $\s{n}=gng^{-1}$. 
+Sei nun $g_1'N=g_1N$ wobei $g_1'=g_1n_1$ und $g_2'N=g_2N$ wobei $g_2'=g_2n_2$
+mit $n_1n_2 \in N$ dann betrachte die Gleichung
+\[
+  (g_1'N)(g_2'N) = (g_1'g_2'N) = (g_1n_1g_2n_2)N = (g_1g_2\s{n_1}n_2)N
+  =(g_1g_2)N = (g_1N)(g_2N)
+\]
 
 \subsection{Einige wichtige Sätze der elementaren Gruppentheorie}
 \label{subsec:einigewichtigesaetzederelementaregruppentheorie}
@@ -584,48 +623,74 @@ Gruppenhomomorphismus. Dann ist
   \overline{f}: G/ker(f) \to H,~\overline{f}([g]) = f(g)
 \]
 ein wohldefinierter injektiver Gruppenhomomorphismus. \\
-\textit{Beweis} $\dots$
+\paragraph{Beweis}
+Zunächst gilt $[g]=[\s{g}] \iff \exists h \in \ker(f): g = h\s{g}$.
+Betrachte damit
+\[
+  \q{f}([g])=f(g)=f(h\s{g})=f(h)f(\s{g})=f(\s{g})=\q{f}([\s{g}])
+\]
+Damit ist die Abbildung wohldefininert. Die Homomorphie Eigenschaft ist auch
+klar. $\q{f}$ ist genau dann injektiv wenn
+gilt $\ker(\q{f})=\{[e_G]\}$. Es gilt
+\[
+  \ker(\q{f})=\{[g] \in G/\ker(f)~|~\q{f}(g)=f(g)=e_H\}
+  =\{[g] \in G/\ker(f)~|~g \in \ker(f)\}
+  =\{[e_H]\}.
+\]
+Also ist $\q{f}$ injektiv.
+\hfill $\square$
 
 \paragraph{Bemerkung 5.30}
 \begin{itemize}
 \item Sei $f: G \to H$ Gruppenhomomorphismus und $N \subset
   G$ ein Normalteiler mit $N \subset ker(f)$, dann ist $\overline{f}: G/N \to H,
   \overline{f}([g]) = f(g)$ ein wohldefinierter Gruppenhomomorphismus.
-\item Sei $f: G \to H$ Gruppenhomomorphismus und $\overline{f}$ wie oben. Dann
-  ist $im(f) = im(\overline{f})$ ein Isomorphismus.
+  \paragraph{Beweis}
+  Klar nach Beweis von Homomorphiesatz.
+  \hfill $\square$
+
+\item Sei $f: G \to H$ Gruppenhomomorphismus und $\overline{f}$ wie oben. \\
+  Dann ist $\q{f}:G/\ker(f) \to \im(\overline{f})$ ein Isomorphismus.
+  \paragraph{Beweis}
+  Es gilt nach Definition von $\q{f}$, $\im(\q{f})=\im(f)$. Da eine Abbildung
+  immer surjektiv zu ihrem Bild ist folgt die Behauptung.
+  \hfill $\square$
+  
 \end{itemize}
 
 \paragraph{Beispiel 5.31} Betrachte den Gruppenhomomorphismus $f: \mathbb{R} \to
 \mathbb{C}\backslash\{0\},~t \mapsto e^{2\pi it}$. Dann ist $ker(f) =
-\mathbb{Z}$ und $im(f) = S^1$. Nach Homomorphiesatz ist also:
+\mathbb{Z}$ und $\im(f) = S^1$. Nach Homomorphiesatz ist also:
 \[
   f: \mathbb{R}/\mathbb{Z} \to S^1,~[t] \mapsto e^{2\pi it}
 \]
-ein Gruppenhomomorphismus.
+ein Gruppenisomorphismus.
 
-\paragraph{Satz 5.32} (\textit{Korrespodenzsatz}) Seien $G$ eine Gruppe und $N
+\paragraph{Satz 5.32} (\textit{Korrespondenzsatz}) Seien $G$ eine Gruppe und $N
 \subset G$ ein Normalteiler. Setze
 \[
-  \mathcal{U} := \{U \subset G ~|~ N \subset U\}
+  \mathcal{U} := \{U \subset G ~|~ N \subset U\},
 \]
+die Menge der Untergruppen die $N$ enthalten. Weiter sei
 \[
-  \mathcal{V} := \{V \subset G/N ~\text{Untergruppe}\}
+  \mathcal{V} := \{V \subset G/N ~\text{Untergruppe}\},
 \]
+die Menge der Untergruppen von $G/N$.
 Dann ist
 \[
-  \mathcal{U} \overset{a}{\to} \mathcal{V},~U \mapsto \pi(U)
+  a: \mathcal{U} \to \mathcal{V},~U \mapsto \pi(U)
 \]
 und
 \[
-  \mathcal{V} \overset{b}{\to} \mathcal{U},~V \mapsto \pi(V)
+  b: \mathcal{V} \to \mathcal{U},~V \mapsto \pi^{-1}(V)
 \]
 eine Bijektion, wobei
 \[
   \pi: G \to G/N,~g \mapsto [g]
 \]
 Es gilt zudem $U \in \mathcal{U}$ ist Normalteiler in $G \Leftrightarrow a(U)
-\subset G/N$ ist Normalteiler. \\
-\textit{Beweis} $\dots$
+\subset G/N$ ist Normalteiler.
+\paragraph{Beweis}
 
 \paragraph{Notation 5.33} Ist $G$ eine Gruppe, $N \in G$ ein Normalteiler und $H
 \subset G$ Untergruppe, dann setze $N \cdot H = \{n \in H, h \in H\}$. $N \cdot
