@@ -1373,21 +1373,17 @@ Sei $R$ ein kommutativer Ring
 \end{enumerate}
 
 \paragraph{Lemma 6.32}
-Sei $I \subset R$ ist prim $\Leftrightarrow R/I$ ist Integritätsbereich. \\
-\textit{Beweis} \\
-$x + I \in R/I$ und $x + y \in R/I$ ~~ $(x+I)(y+I) = xy + I$ \\
-\grqq $\Rightarrow$ \grqq \\
-Nehmen wir an, dass $I$ prim ist.
-\[
-  (x + I)(y + I) = I \Leftrightarrow xy \in I \Rightarrow (x \in I \vee y \in I)
-  \Leftrightarrow (x + I) = I ~oder~ y + I = I
-  \Rightarrow R/I ~\text{Integritätsbereich}
-\]
-\grqq $\Leftarrow$ \grqq \\
-$R/I$ Integritätsbereich $\Rightarrow$ $I$ prim.
-\[
-  (x + I)(y + I) = I \Rightarrow x \in I ~oder~ y \in I
-\]
+Sei $I \subset R$ ist prim $\Leftrightarrow R/I$ ist Integritätsbereich.
+\paragraph{Beweis}
+\begin{enumerate}{}
+\item[$\Rightarrow$)] Seien $a,b \in R$ bel. dann gilt da $I$ prim ist
+  \[
+    (a + I) \cdot (b + I) = I \iff a \in I \vee b \in I.
+  \]
+  Es ist also entweder $a+I=I$ oder $b+I=I$. Somit ist $R/I$ Integritätsbereich.
+
+\item[$\Leftarrow$)] Die andere Richtung einfach rückwärts.
+\end{enumerate}
 \hfill $\square$
 
 \paragraph{Definition 6.33}
@@ -1427,39 +1423,41 @@ Sei $M$ eine Menge
 \paragraph{Lemma 6.36}
 \textit{(Lemma von Zorn)} Sei $M$ eine partiell geordnete Menge, in der jede
 total geordnete Teilmenge (= eine Kette) eine obere Schranke hat.
-Dann enthält $M$ mindestens ein maximales Element. \\
-\textit{Beweis} \\
+Dann enthält $M$ mindestens ein maximales Element.
+\paragraph{Beweis}
 Bosch, §3.4, Lemma 5
 
 \paragraph{Lemma 6.37}
 Sei $I \in R$ ein echtes Ideal. Dann existiert ein maximales Ideal $m \in R$,
-sodass $I \in m \in R$. \\
-\textit{Beweis} \\
-$M = \{J \underset{\neq}{\subset} R ~|~ I \subset J \} = $ die Menge aller echten
-Idealen in $R$, die $I$ enthalten, $J_1 \leq J_2 \Leftrightarrow J_1 \subset
-J_2$ Kette von Idealen $J_1 \subset J_2 \subset \dots$ Wir müssen zeigen, dass
-es ein echtes Ideal $J \in I \in R$ gibt sodass $\forall i : J_i \subset J$. \\
-$J := \bigcup_i J_i \subset R$
-\begin{enumerate}
-\item $J$ ist Ideal ?: \\
-  $x,y \in J \Rightarrow \exists a: x \in J_a ~\text{und}~ \exists b: b \in J_b$ \\
-  $c = max(a,b) \Rightarrow x,y \in J_c \Rightarrow x + y \in J_c \subset J$. \\
-  --- \\
-  $x \in J \Rightarrow x \in J_a$ \\
-  $x \cdot r \in J$: $x \cdot r \in J_a \subset J$.
-\item $J \neq R$ ?: \\
-  Sei $J = R \Rightarrow 1 \in J \Rightarrow \exists a: 1 \in J_a \Rightarrow J
-  = R ~~\lightning$
+sodass $I \in m \in R$.
+\paragraph{Beweis}
+Wende das Lemma von Zorn an. Als $P$ nehme man einfach die Menge aller Ideale in
+$R$ die $I$ enthalten. Diese Menge ist pariell geordnet. Als Maximum nehmen aman
+$A = \bigcup_{i \in I} A_i$ wobei $I$ eine Indexmenge ist und $A_i$ maximales
+Ideal in $R$, dass $I$ enthält. Nun muss man zeigen dass $A$ ein maximales Ideal
+ist. Dazu ist zu zeigen
+\begin{enumerate}{}
+\item $A$ ist Ideal.
+\item $A \neq R$
 \end{enumerate}
+Beweis hierzu
+\begin{enumerate}{}
+\item Einfach.
+\item Falls dies gelten würde, dann wäre $1 \in A$ somit gäbe es aber ein echtes
+  Ideal $A_i$ das die $1$ enthalten würde. Das ist Widerspruch zu echtem Ideal.
+\end{enumerate}
+\hfill $\square$
 
 \paragraph{Beispiel 6.38} $\mathbb{Z}$ welche Ideale sind maximal? \\
 maximale Ideale = $(p) = p \mathbb{Z} ~p$ eine Primzahl. \\
 maximale Ideale $\subset$ Primideale $= ~\text{maximale Ideale}~ \cup \{(0)\}$.
 
 \paragraph{Korollar 6.39}
-Jedes nicht invertierbare Element in $R$ liegt in einem maximalen Ideal. \\
-\textit{Beweis} \\
-$z \in I = (z) = Rz \neq R \hfill \square$
+Jedes nicht invertierbare Element in $R$ liegt in einem maximalen Ideal.
+\paragraph{Beweis}
+Betrachte das Hauptideal $(x)$ wobei $x \in R$ nicht invertierbar ist. Somit ist
+$1 \notin (x)\implies (x) \neq R$. Wende dann das obige Lemma an.
+\hfill $\square$
 
 \subsection*{Hauptidealringe}
 \label{subsec:hauptidealbereiche}
