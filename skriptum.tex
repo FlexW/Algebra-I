@@ -1512,17 +1512,56 @@ die Behauptung erfüllt. Sei nun im folgenden $\deg(B) \leq \deg(A)$.
 Es wird Induktion über $\deg(A)$ geführt. Sei dann $\deg(A)=0$ also ist $A$ eine
 Konstante. Setze dann $Q(x)=\frac{A(x)}{B(x)}$ und $R(x)=0$. Damit ist die
 Induktionsvorraussetzung erfüllt. Sei nun die Aussage schon für $\deg(A) < n$ bewiesen.
+Betrachte dann das Polynom
+\[
+  A(x) = a_nx^n + \dots + a_1x + a_0
+\]
+mit $\deg(A)=n$ und
+\[
+  B(x) = b_kx^k + \dots + b_1x + b_0
+\]
+mit $\deg(B)=k$ wobei $k < n$. Wähle dann das Polynom
+\[
+  P(x) = \frac{a_n}{b_k}x^{n-k}
+\]
+Nun gilt für
+\[
+  A'(x) = A(x) - B(x)P(x)
+\]
+$\deg(A') < n$ (einfaches nachrechnen).
+Somit kann aber auch auf $A'$ die Induktionsvorraussetzung angewandt werden.
+\[
+  A'(x) = Q'(x)B(x) + R'(x)
+\]
+Damit ist
+\[
+  A(x) = B(x)P(x) - A'(x) = B(x)P(x) - Q'(x)B(x) + R'(x) = B(x)(P(x) - Q'(x)) + R'(x) 
+\]
+von der geforderten Form.
+\paragraph{Eindeutigkeit}
+Seien $A(x) = Q(x)B(x) + R(x)$ und $A(x) = Q'(x)B(x) + R'(x)$. Setze
+\[
+  Q(x)B(x) + R(x) = Q'(x)B(x) + R'(x) \iff B(x)(Q(x) - Q'(x)) = R'(x) - R(x) 
+\]
+Da angenommen werden kann dass $\deg(R') \neq \deg(R)$ (da sonst die Behauptung
+schon erfüllt wäre). Betrachte dass $R'(x) - R(x)$ ein Vielfaches von $B(x)$
+sein muss. Laut Voraussetzung gilt $\deg(R'-R) \leq \max(\deg(R),\deg(R')) <
+\deg(B)$, dann kann aber $R'-R$ kein Vielfaches von $B$ sein. Das ist ein
+Widerspruch.
+\hfill $\square$
 
 \paragraph{Lemma 6.45}
-Ein Ring mit Division mit Rest ist ein Hauptidealring. \\
-\textit{Beweis} \\
-$(0) \neq I \subset R$, $0 \neq b \in I$ mit der Eigenschaft
+Ein Ring $R$ mit Division mit Rest ist ein Hauptidealring.
+\paragraph{Beweis}
+Sei $I \subset R$ Ideal mit $I \neq (0)$, da dieser Fall trivial ist. Definiere
+zunächst für $0 \neq b \in I$
 \[
-  \phi(b) = min\{\phi(x) ~|~ 0 \neq x \in I\}
+  \phi(b) = \min\{\phi(x) ~|~ x \in I, x \neq 0\}
 \]
-$\overset{?}{\Rightarrow}$ $I = (b)$ \\
-$a \in I \Rightarrow a = qb + r ~~ \phi(r) < \phi(b) \Rightarrow r = 0
-\Rightarrow a = qb \hfill \square$
+Dann gilt $I = (b)$. Tatsächlich kann man für jedes Element $a \in I$ schreiben
+$a = qb + r$ mit $\phi(r) < \phi(b)$ wobei $r \in I$ und $\phi(b)$ minimal ist.
+Da $r \in I$ gilt $r = 0$ und somit $a \in (b)$.
+Daraus folgt die Behauptung. \hfill $\square$
 
 \paragraph{Definition 6.46}
 Sei $R$ ein Integritätsbereich.
@@ -1536,30 +1575,27 @@ Sei $R$ ein Integritätsbereich.
   \end{itemize}
   Größter gemeinsamer Teiler ist bis auf Multiplikation mit einem invertierbaren
   Element eindeutig definiert.
-  \textbf{Notation:} $gcd(a,b)$
+  \textbf{Notation:} $\gcd(a,b)$
 \end{enumerate}
+\paragraph{Beweis}
+Angenommen es gibt $d \neq d'$ mit $d=d'=\gcd(a,b)$.
+Wegen Definition des $\gcd$ gilt auch $d|d'$ und $d'|d$. O.B.d.A ist $d > d'$
+dann ist $d|d'$ ein Widerspruch.
 
 \paragraph{Lemma 6.47}
 Sei $R$ ein Hauptidealbereich $\Rightarrow \forall a,b \in R: \exists ~ \gcd(a,b)$
-\\
-\textit{Beweis} \\
-$a,b \in R$ \\
-$ I = (a,b) = aR + bR$ \\
-$\exists d \in R: I = (d) = dR$ \\
-$d \overset{?}{=} \gcd(a,b)$ \\
-$d|a$ ? $a \in I = (d) \Rightarrow a = dx, x \in R \Rightarrow d|a$ für $d|b$ analog.
-\\
-$d'|a ~~ a = d'x'$ \\
-$d'|b ~~ b = d'y'$ \\
-$\overset{?}{\Rightarrow} d'|d$ wegen \\
-$d \in I ~~ d = \underset{d'x'}{a \alpha}
-+ \underset{d'y'}{b \beta} , \alpha, \beta \in R$ \\
-$d = d'(x' \alpha + y' \beta) \hfill \square$
+\paragraph{Beweis}
+Da $R$ Hauptidealbereich betrachte das Ideal $I = (a,b) = (d)$. Nun ist zu
+zeigen dass $\gcd(a,b)=d$. Da $a \in I = (d)$ und $b \in I = (d)$ folgt schon
+dass $d|a \wedge d|b$. Angenommen es gibt noch ein $d' \in (a,b)$ mit $d'|a
+\wedge d'|b$. Da gilt $d = ax + by$, gilt $d'|d$. Somit ist $d$ von den
+geforderten Eigenschaften.
+\hfill $\square$
 
 \paragraph{Bemerkung 6.48}
 Sei $R$ Hauptidealbereich.
 \[
-  d = \gcd(a,b) \Rightarrow d = a\alpha + b\beta, mit \alpha,\beta \in R
+  d = \gcd(a,b) \Rightarrow d = a\alpha + b\beta, ~\text{mit}~ \alpha,\beta \in R
 \]
 
 \paragraph{Definition 6.49}
@@ -1583,23 +1619,15 @@ $n_i \in \mathbb{Z}$ mit $n_{i+1}|n_i$ \\
  \item $\Rightarrow$ jede aufsteigende Kette stationär wird
 \item $\Rightarrow \mathbb{Z}$ ist noethersch.
 \end{itemize}
-\textbf{Frage:} Ist $\mathbb{Z}$ noethersch? Nein!
 
 \paragraph{Lemma 6.51}
-Hauptidealringe sind noethersch. \\
-\textit{Beweis} \\
-\[
-  I_1 \subset I_2 \subset \dots
-\]
-aufsteigende Kette von Idealen.
-\[
-  I = (d) = \bigcup_{j = 1}^\infty I_j, ~~ d \in R ~~ \text{Ideal}
-\]
-\[
-  d \in I \Rightarrow \exists n: d \in I_n \Rightarrow  I \subset I_n
-  \Rightarrow I_j = I_n ~~ \text{f.a.} ~ j \geq n 
-\]
-\hfill $\square$
+Hauptidealringe sind noethersch.
+\paragraph{Beweis}
+Sei $I_0 \subset I_1 \subset \dots$ so eine aufsteigende Kette von Idealen.
+Betrachte $I=\bigcup_{n=0}^\infty I_n$ dann gilt $I = (a)$ wegen Hauptidealring.
+Somit gilt aber auch $\exists n \in \N: a \in I_n$. Daraus folgt aber auch $I =
+I_k$ f.a. $k \geq n$. Damit ist diese Kette stationär.
+\hfill $\square$ 
 
 \subsection{Faktorielle Ringe}
 \label{subsec:faktorielleringe}
@@ -1626,21 +1654,13 @@ $R$ Integritätsbereich. Für ein Element $a \in R$ habe man Zerlegung
 \]
 wobei $p_i$ Primelemente sind und $q_i$ irreduzibel. Dann gilt $r = s$ und nach
 evntl. Umnummerierung der $q_j$ ist $p_i$ assoziert zu $q_i$
-f.a. $i = 1, \dots, r$. \\
-\textit{Beweis}
-\[
-  a = p_i \dots p_r = q_1 \dots q_s
-\]
-also
-\[
-  p_1|q_1, \dots q_s \Rightarrow \exists j: p_1|q_j
-\]
-Nach Umnummerierung, können wir $j = 1$ annehmen. D.h. $p_1|q_1$
-\[
-  p_1|q_1 \Rightarrow q_1 = p_1\underbrace{u}_{\in R^*}
-  \Rightarrow p_2 \dots p_r = uq_2 \dots q_s
-\]
-Beweis im Allgemeinen per Induktion.
+f.a. $i = 1, \dots, r$.
+\paragraph{Beweis}
+Da $p_1|q_1 \dots q_s \Rightarrow \exists n \in \{1,\dots,s\}: p_1|q_n $. Nach
+Umnummerierung, kann angenommen werden $p_1|q_1 \Rightarrow p_1 \cdot x =q_1$.
+mit $x \in R^*$. Daraus folgt $p_2 \cdots p_r = xq_2 \cdots q_s$. Diesen Prozess
+kann man induktiv fortsetzen, sodass am Ende alle $p$ und $q$ verschwinden.
+Damit müssen es genau gleich viele gewesen sein.
 \hfill $\square$
 
 \paragraph{Lemma 6.62}
@@ -1651,26 +1671,18 @@ Sei $R$ ein Integritätsbereich. Dann ist äquivalent:
 \item Jedes $a \in R\backslash (R^*\cup \{0\})$ lässt sich eindeutig
   (bis auf die Reihenfolge) als Produkt von Primelementen schreiben. 
 \end{enumerate}
-\textit{Beweis}
-\paragraph{1. $\Rightarrow$ 2.} 
+\paragraph{Beweis}
 Es genügt zu zeigen, dass jedes irreudzible Element ein Primelement ist.
-$a$ irreduzibel $\Rightarrow a$ prim
-\[
-  a|xy \overset{?}{\Rightarrow} a|x ~oder~ a|y
-\]
-\[
-  x = x_1 \dots x_n ~~ y = y_1 \dots y_m
-\]
-Wobei $x_i,y_i$ irreduzibel sind.
-\[
-  \Rightarrow a|x_1 \dots x_n y_1 \dots y_m
-\]
-Wegen Eindeutigkeit
-\[
-  \Rightarrow \exists x_i ~oder~ y_i: a ~\text{a ist assoziativ zu}~x_i,y_i
-\]
-\paragraph{2. $\Rightarrow$ 1.}
-Übung.
+\begin{enumerate}{}
+\item[$\Rightarrow$)] Sei $q \in R$ irreduzibel. Wähle dann $x,y \in R: q|xy$.
+  Seien $x=x_1 \dots x_n$ und $y=y_1 \dots y_n$ die eindeutigen Zerlegungen in
+  irreduzible Elemente. Wegen der Endeutigkeit muss gelten $q|x_i$ oder $q|y_j$.
+  daraus folgt aber auch $q|x$ oder $q|y$. Damit ist $q$ ein Primelement.
+  Reihenfolge und Eindeutigkeit folgen aus vorherigem Lemma.
+\item[$\Leftarrow$)] Aus einem Lemma folgt wenn Element prim dann irreduzibel.
+  Eindeutigkeit folgt aus vorherigem Lemma.
+\end{enumerate}
+\hfill $\square$
 
 \paragraph{Definition 6.63}
 Ein Integritätsbereich $R$ heißt faktoriell, wenn die äquivalenten Bedingunen
@@ -1694,18 +1706,19 @@ Sei $R$ ein Integritätsbereich und $a,b \in R$
 \[
   (a) = (b) \Leftrightarrow b = au ~~ u \in R^*
 \]
-\textit{Beweis} \\
-\grqq $\Leftarrow$ \grqq ~~ Klar. \\
-\grqq $\Rightarrow$ \grqq \\
-O.B.d.A. $b \neq 0$ dann gilt:
+\paragraph{Beweis}
+\begin{enumerate}{}
+  \item[$\Rightarrow$)] O.B.d.A $b\neq 0$ Dann gilt
 \[
-  (a) = (b) \Rightarrow b \in (a) \Rightarrow b = ax ~~ x \in R
+  (a) = (b) \Rightarrow a \in (b) \Rightarrow bx = a
 \]
 \[
-  (a) = (b) \Rightarrow a \in (b) \Rightarrow a = by ~~ y \in R
+  (a) = (b) \Rightarrow b \in (a) \Rightarrow ay = b
 \]
-$b = byx \Leftrightarrow b(1 - yx) = 0 \overset{b~=~0~+
-  ~\text{Integritätsbereich}}{\Rightarrow} 1 - yx = 0$
+$\Rightarrow b= bxy \Leftrightarrow 0 = bxy - b \Leftrightarrow 0 = b(xy - 1)$.
+Damit muss aber $xy = 1$ und da $1$ Einheit folgt $x \in R^*$ oder $y \in R^*$.
+\item[$\Leftarrow$)] klar.
+\end{enumerate}
 \hfill $\square$
 
 \paragraph{Lemma 6.67}
@@ -1714,22 +1727,27 @@ $p|ab, ~~ a,b \in R$. Dann gilt:
 \[
   p|a ~\text{oder}~ p|b
 \]
-\textit{Beweis} \\
-Nehmen wir an, dass $p \nmid a$ $\overset{?}{\Rightarrow} p|b$ \\
-$\Rightarrow \gcd(a, p) = 1 \Rightarrow 1 = ax + py
-\overset{b}{\Rightarrow} b = bax + bpy = p(dx + by) \Rightarrow p|b$ \hfill $\square$
+\paragraph{Beweis}
+O.b.d.A $p \not| a$. Da sonst fertig. Zu zeigen ist $p|b$
+\[
+  p \not| a \implies \exists x,y \in R: px + ay = 1 \implies b(px + ax) = b 
+\]
+Da $p$ linke Seite teilt, teilt $p$ auch rechte Seite.
+\hfill $\square$
+
 
 \paragraph{Lemma 6.68}
 Sei $R$ ein Integritätsbereich und $a \in R$. Dann gilt:
 \[
   (a) ~ \text{ist prim} \Rightarrow a ~ \text{ist irreduzibel}
 \]
-\textit{Beweis} \\
-Nehmen wir an, dass $a$ nicht irreduzibel ist.
+\paragraph{Beweis}
+Sei $a=bc$ Faktorisierung. Da $(a)$ prim folgt o.B.d.A $b \in (a)$. Damit
 \[
-  \Rightarrow a = bc ~ \text{mit} ~ b,c \in R \backslash R^*
+  b = ax = bcx \Rightarrow cx = 1.
 \]
-Übung.
+Somit ist $c$ invertierbar und damit $a$ irreduzibel.
+\hfill $\square$
 
 \paragraph{Definition 6.69}
 \begin{enumerate}
@@ -1761,31 +1779,27 @@ Nehmen wir an, dass $a$ nicht irreduzibel ist.
 \end{enumerate}
 
 \paragraph{Theorem 6.71}
-$R$ Hauptidealbereich $\Rightarrow R$ ist faktoriell. \\
-\textit{Beweis} \\
-$a \in R\backslash (R^*\cup \{0\})$
-\begin{enumerate}
-\item Zu zeigen: $a$ hat einen irreduziblen Teiler. \\
-  $a$ irreduzibel $\Rightarrow$ fertig. Falls $a$ reduzibel $\Rightarrow a =
-  a_1b_1 ~~ a_1,b_1 \notin R^* \Rightarrow (a) \subset (a_1) = Ra$. Falls nun
-  $a_1$ irreduzibel sind wir wieder fertig. Falls $a$ reduzibel $\Rightarrow
-  a_1 = a_2b_2 ~~ a_2,b_2 \notin R^*$. Nach Lemma wird diese Kette stationär.
-  $\Rightarrow a_n$ ist irreduzibel und $a_n|a$.
-\item Zu zeigen: $a$ lässt sich als Produkt von irreduziblen Elementen
-  schreiben. \\
-  $a$ hat irreduziblen Teiler
-  \[
-    \Rightarrow a = a_1q_1
-  \]
-  $q_1$ irreduzibel. Es folgt wieder $a_1 \in R^*$ oder $a_1$ hat einen
-  irreduziblen Teiler $\Rightarrow (a) \subset (a_1)$
-  \[
-    (a) \subset (a_1) \subset (a_2) \dots
-  \]
-  wird stationär $\Rightarrow a = n q_1 \dots q_n$
-  
-\item Zu zeigen: Produkt aus 2. ist eindeutig (bis auf die Assoziativität und
-  Reihenfolge).
+$R$ Hauptidealbereich $\Rightarrow R$ ist faktoriell.
+\paragraph{Beweis}
+Sei $a \in R\backslash (R \cup 0)$
+\begin{enumerate}{}
+  \item $a$ hat einen irreduziblen Teiler. Falls $a$ irreduzibel dann fertig.
+    Falls nicht, dann ist $a$ reduzibel. Dann zerlege $a$ in Nichteinheiten $a =
+    a_1x$. Falls nun $a_1$ irreduzibel dann fertig. Wenn nicht dann wiederhole
+    den letzten Schritt. Auf diese Weise erhält man eine aufsteigende Kette von
+    Idealn
+    \[
+      (a) \subset (a_1) \subset (a_2) \subset \dots
+    \]
+    Diese Kette wird stationär da $R$ noethersch ist. Somit gibt es ein $(a_N) =
+    (a_i)$ f.a. $i \geq N$. Damit ist $a_N$ irreduzibel.
+  \item $a$ lässt sich als Produkt von irreduziblen Elementen schreiben. Nach 1.
+    finden wir ein irreduzibles $q_1$ sodass $q_1|a$ somit $a=q_1a_1$ mit $a_1$
+    kann man nun das gleiche durchführen. So erhält man eine eindeutige
+    Zerlegung $a = q_1\dots q_n$. Oder eine nicht stationäre Kette von Idealen
+    $(a) \subset (q_1) \subset (q_2) \subset \dots $. Das ist aber nicht möglich
+    da $R$ noethersch ist.
+  \item Die Eindeutigkeit folgt aus dem vorherigen Lemma.
 \end{enumerate}
 \hfill $\square$
 
@@ -1803,12 +1817,14 @@ Es gibt faktorielle Ringe, die keine Hauptidealbereiche sind
   n \geq 2, K ~ Körper
 \]
 
-\paragraph{Theorem 6.74}
+\paragraph{Theorem 6.74} \textit{(Satz von Gauß)}
 Sei $R$ ein faktorieller Ring. Dann ist auch der Polynomring $R[x]$ faktoriell.
+\paragraph{Beweis}
+
 
 \paragraph{Korollar 6.75}
 $R$ faktorieller Ring $\Leftarrow R[x_1, \dots, x_n]$ ist faktoriell
-(insbesondere kan $R$ ein Körper sein). \\
+(insbesondere kann $R$ ein Körper sein). \\
 \textit{Beweis} \\
 \[
   (R[x_1])[x_2] = R[x_1,x_2] \Rightarrow \text{die Aussage folgt}
@@ -1887,22 +1903,21 @@ gilt
 \[
   v_p(fg)=v_p(f)+v_p(g) ~~f,g \in Q(R)[x]
 \]
-\textit{Beweis}
-Die Aussage ist klar für konstante Polynome. O.B.d.A $f,g \neq 0~~f,g\in
-R[x]$(mit den Nennern multiplizieren) und $v_p(f)=0=v_p(g)$ (mit dem GGT von
-Koeff. teilen). Wir müssen also zeigen $v_p(fg)=0$
+\paragraph{Beweis}
+Für konstante Polynome ist die Behauptung klar. Sei nun o.B.d.A. $f,g \in R[x]$
+(mit Nenner multiplizieren) mit $v_p(f)=0=v_p(g)$ (Koeffizienten durch $\gcd$ der
+Koeffizienten teilen). Es ist nun zu zeigen dass $v_p(fg)=0$. Betrachte dazu den
+Homomorphismus
 \[
-  R[x] \longrightarrow (R/(p))[x],
-  \us{a_i\in R}{\sum} a_ix^i=h \mapsto \s{h}=\sum \s{a_i}x^i
+  \phi: R[x] \longrightarrow (R/(p))[x],
 \]
-$(R/(p))$ ist Integritätsbereich
+in diesem verschwinden ($\ker(\phi)$) alle Polynome die nur Koeffizienten haben, die durch $p$
+teilbar sind. Betrachte darin
 \[
-  ker(\phi) = \{h\in R[x]~|~v_p(h)>0\}
+  \phi(g)\phi(g) = \phi(fg) \neq 0
 \]
-\[
-  \phi(f) \neq 0 \neq \phi(g) \Rightarrow \phi(fg) = \phi(f)\phi(g) \neq 0
-  \Rightarrow v_p(fg)=0
-\]
+Also sind auch bei $fg$ nicht alle Koeffizienten durch $p$ teilbar. Damit folgt
+$v_p(fg)=0$.
 \hfill $\square$
 
 \paragraph{Korollar 6.81}
@@ -1920,14 +1935,12 @@ $R$ faktorieller Ring.
     \]
     primitiv $:= \gcd(a_i)=1$ 
 \end{enumerate}
-\textit{Beweis}
+\paragraph{Beweis}
 \begin{enumerate}
-  \item $v_p(h)=0$, $v_p(f) \leq 0$ und $v_p(g) \leq 0$. Daraus folgt mit Lemma
-    6.80 wegen $v_p(h)=v_p(f)+v_p(g)$, dass $v_p(f)=v_p(g)=0 \Rightarrow f,g \in
-    R[x]$.
-  \item $\forall p\in P~~v_p(h)\geq 0, v_p(f)=0$ da $f$ primitiv. Wieder folgt
-    mit Lemma 6.80 $v_p(g)\geq 0 \Rightarrow g\in R[x]$
-  \end{enumerate}
+\item $v_p(h)=0 \Rightarrow v_p(f) \leq 0, v_p(g) \leq 0 \Rightarrow
+  v_p(f)=v_p(g)=0 \Rightarrow f,g \in R[x]$.
+\item $v_p(h) \geq 0, v_p(f)=0 \Rightarrow v_p(g) \geq 0 \Rightarrow g \in R[x]$.
+\end{enumerate}
   \hfill $\square$
 \paragraph{Theorem 6.82} \textit{(Satz von Gauß)}
 Sei $R$ faktorieller Ring
@@ -1941,8 +1954,7 @@ Sei $R$ faktorieller Ring
 \item Alle Primelemente in $R[x]$ sind der Form 1a oder 1b.
 \item $R[x]$ ist faktoriell.
 \end{enumerate}
-\textit{Beweis}
-\dots
+\paragraph{Beweis}
 
 \section*{Körper}
 \subsection{Die Charakteristik eines Körpers}
@@ -2002,7 +2014,15 @@ Charakteristik $p$ ist.
   $I=K$
 \item Jeder Homomorphismus von Körpern ist injektiv.
 \end{enumerate}
-\textit{Beweis} \dots
+\paragraph{Beweis}
+\begin{enumerate}{}
+\item klar.
+\item Betrachte $K_1,K_2$ Körper mit $\phi: K_1 \to K_2$ dann muss auch in $K_2$
+  gelten $0 \neq 1$ ein Homomorphismus von Körpern ist ein Ringhomomorphismus
+  und somit muss $\ker(\phi)$ ein Ideal sein. Somit kann $\ker(\phi) = K$ nicht
+  gelten da dann $0=1$ in $K_2$ wäre. Somit $\ker(\phi)=(0)$ und damit $\phi$ injektiv.
+\end{enumerate}
+\hfill $\square$
 
 \paragraph{Bemerkung 7.7}
 $F\subset K$ also $F$ ist Unterkörper von $K$. Dann folgt
@@ -2027,7 +2047,23 @@ Sei $K$ ein Körper und $P\in K$ ein Primkörper.
 \item $char(K)=0\Leftrightarrow P=\Q$
 \item $char(K)=p\Leftrightarrow P=\mathbb{F}_p$
 \end{enumerate}
-\textit{Beweis} \dots
+\paragraph{Beweis}
+$\tau: \Z \to P,~~n \mapsto n1$ ist Ringhomomorphismus. Damit liegen alle
+Vielfachen von $n1$ in $P$.
+\begin{enumerate}{}
+\item Falls $char(K)=0$ gilt $\ker(\tau)=0$. Damit ist $\Z \simeq \tau(\Z)$.
+  Damit folgt
+  \[
+    \Q = Q(\Z) \subset P.
+  \]
+  Da aber nach Def. $P$ in allen Teilkörpern liegt folgt $\Q=P$
+\item Hier ist $\ker(\tau)=(p)$. Nach Homomorphiesatz folgt
+  \[
+    \tau(\Z) \simeq \Z/p\Z = \F_p.
+  \]
+  $\F_p$ ist Körper somit ist $\F_p \subset P$. Wie in Punkt 1 folgt nun die Gleichheit. 
+\end{enumerate}
+\hfill $\square$
 
 \paragraph{Korollar 7.11}
 Sei $L\to K$ ein Homomorphismus von Körpern. Dann gilt
