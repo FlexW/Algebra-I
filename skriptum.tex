@@ -2066,12 +2066,21 @@ Vielfachen von $n1$ in $P$.
 \hfill $\square$
 
 \paragraph{Korollar 7.11}
-Sei $L\to K$ ein Homomorphismus von Körpern. Dann gilt
+Sei $\phi: L\to K$ ein Homomorphismus von Körpern. Dann gilt
 \begin{enumerate}{}
 \item $char(L)=char(K)$
 \item Primkörper werden identifiziert
 \end{enumerate}
-\textit{Beweis} \dots
+\paragraph{Beweis}
+\begin{enumerate}{}
+\item Jeder Homomorphismus von Körpern ist injektiv damit gilt $\phi(e_L)=e_K$.
+  Somit
+  \[
+    ub{\phi(e_L) + \dots \phi(e_L)}{p-mal} = 0 \Rightarrow \ub{e_K + \dots e_K}{p-mal} = 0
+  \]
+  Damit haben $K$ und $L$ die gleiche Charakteristik.
+\item Was bedeutet das ?
+\end{enumerate}
 
 \subsection{Körpererweiterungen}
 
@@ -2095,7 +2104,27 @@ Es seien $F\subset K\subset L$ endliche Körper. Dann gilt
 \[
   [L:F]=[L:K]\cdot[K:F]
 \]
-\textit{Beweis} \dots
+Genauer: Sind $(k_i)_{i\in I}$ eine Basis von $L/K$ und $(f_j)_{j\in J}$ eine
+Basis von $K/F$, so ist
+\[
+  (k_j,f_i)_{(j,i) \in J \times I}
+\]
+eine Basis von $L/F$.
+\paragraph{Beweis}
+$a \in L$ kann dargestellt werden als $a = \sum_{i \in I}\lambda_ik_i$ wobei
+$k_i = \sum_{j \in J}\mu_jf_j$. Also
+\[
+  a = \sum_{(i,j) \in I \times J}\lambda_i\mu_jf_{ij}
+\]
+Somit ist $  (k_j,f_i)_{(j,i) \in J \times I}$ ein $F$-Erzeugendensystem von
+$(L,+)$. Aus
+\[
+  \sum_{(i,j) \in I \times J}\lambda_i\mu_jf_{ij} = 0 ~\text{d.h.}~
+  \sum_{i \in I}\lambda_i\left(\sum_{j \in J} \mu_jf_{j} \right) =
+  0,~\text{folgt}~\sum_{j\in J}
+\]
+\dots Muss verbessert werden. 
+
 
 \paragraph{Definition 7.15}
 Sei $L/K$ eine Körpererweiterung
@@ -2113,14 +2142,18 @@ Sei $L/K$ eine Körpererweiterung
 \end{enumerate}
 
 \paragraph{Lemma 7.17}
-Jede endliche Körpererweiterung $L/K$ ist algebraisch. \\
-\textit{Beweis}
-\dots
+Jede endliche Körpererweiterung $L/K$ ist algebraisch.
+\paragraph{Beweis}
+Sei $n=[L:K]$ damit sind die $n+1$ Elemente $1+a+a^2+\dots+a^n \in L/K$ linear
+abhängig. Somit ist $\lambda_01 + \lambda_1a_1 + \dots + \lambda_na^n = 0$ für
+gewisse $\lambda_0,\dots,\lambda_n \in K$. Folglich ist $a$ Nullstelle. Damit
+folgt die Behauptung.
+\hfill $\square$
 
 \paragraph{Definition 7.18}
 $L/K$ Körpererweiterung. $\alpha\in L$
 \begin{enumerate}{}
-\item  $\psi_\alpha:K[x]\to L,~f(x)\mapsto f(\alpha) ~~~Im(\psi_\alpha)=K[\alpha]$
+\item  $\psi_\alpha:K[x]\to L,~f(x)\mapsto f(\alpha) ~~~\im(\psi_\alpha)=K[\alpha]$
 \item $L$ ist Integritätsbereich $\Rightarrow K[\alpha]$ ist Integritätsbereich.
 \item Quotientenkörper von $K[\alpha]$ bezeichnen wir mit $K(\alpha)$.
 \item $\alpha$ algebraisch$/K \Rightarrow \psi_\alpha$ ist nicht injektiv.
@@ -2146,7 +2179,21 @@ Minimalpolynom von $\alpha$. Dann gilt
 \item $K[\alpha]=K(\alpha)$
 \item $[K(\alpha):K]=\deg(p(x))$
 \end{enumerate}
-\textit{Beweis} \dots
+\paragraph{Beweis}
+\begin{enumerate}{}
+\item $K[x] \to K[\alpha]$ ist surjektiv. Daher nach Homomorphiesatz $K[\alpha]
+  \simeq K[x]/(m_a,K)$. Da $K[x]$ Hauptidealring, erzeugt das irreduzibele $m_a,K$
+  Polynom ein maximales Ideal $(m_a,K)$, sodass $K[x]/(m_a,K)$ ein Körper ist.
+  Damit gilt $K[x]=K(x)$.
+\item Bezeichne $p(x)=m_{a,K}$. $(1,a,^2,\dots,a^{n-1})$ stellt eine Basis von
+  $K(a)/K$ dar. Denn
+  \[
+    \lambda_01 + \lambda_1a + \dots + \lambda_{n-1}a^{n-1}=0,~\lambda_i \in K ~~ n=\deg(m_{a,K})
+  \]
+  Dann ist $Q(a)=0$ und $\deg(Q) < n$ für $Q$ wie oben nur $x$ statt $a$. Nun
+  gilt aber $m_{a,K}|Q(a)$ und damit muss $Q(a)$ schon $0$ sein. Damit sind
+  $(1,a,^2,\dots,a^{n-1})$ linear unabhängig. Erzeugendensystem.. 
+\end{enumerate}
 
 \paragraph{Definition 7.21}
 $L/K$ Körpererweiterung.$\alpha_1,\dots,\alpha_n\in L$
@@ -2163,12 +2210,19 @@ $L/K$ Körpererweiterung.$\alpha_1,\dots,\alpha_n\in L$
 \paragraph{Lemma 7.22}
 Sei $L=K(\alpha_1,\dots,\alpha_n)$, mit $\alpha_i$ algebraisch$/K \Rightarrow
 L/K$ ist endlich.
+\paragraph{Beweis}
+Man kann $K(a_1,\dots,a_n)$ schreiben als $K(a_1)(a_2)\dots(a_n)$ mit dem
+Gradsatz folgt die Endlichkeit.
+\hfill $\square$
 
 \paragraph{Theorem 7.23}
 $F\subset K\subset L$ Körpererweiterung
 \[
   L/F ~\text{ist algebraisch} \Leftrightarrow L/K~\text{und}~ K/F~\text{sind algebraisch.}
 \]
+\paragraph{Beweis}
+klar.
+\hfill $\square$
 
 \paragraph{Korollar 7.24}
 $L/K$ Körpererweiterung
@@ -2267,7 +2321,7 @@ $\q{K}', \q{K}''$ isomorph über $K$.
 Sei $K$ ein Körper und $f(x) \in K[x]$
 
 \paragraph{Definition 7.42}
-Ein Körper $K \subset L$ hei\t Zerfällungskörper von $f(x)$, wenn $f(x)$ lässt
+Ein Körper $K \subset L$ heißt Zerfällungskörper von $f(x)$, wenn $f(x)$ lässt
 sich als Produkt von linearen Faktoren schreiben $f(x)=c(x-\alpha_1) \dots
 (x-\alpha_n)$ und es gilt $L = K(\alpha_1, \dots, \alpha_n)$.
 
@@ -2275,7 +2329,8 @@ sich als Produkt von linearen Faktoren schreiben $f(x)=c(x-\alpha_1) \dots
 \begin{enumerate}{}
 \item $x^2 + 1 \in \R[x]$ $L=\C$ und $K=\R$ dann
   $x^2+1=(x-i)(x+i)$ und $\R(i)=\C$.
-\item Ist $\Q(\sqrt[3]{2}) \subset \R$ Zerfällungskörper von $x^3-2$? nein.s
+\item Ist $\Q(\sqrt[3]{2}) \subset \R$ Zerfällungskörper von $x^3-2$? nein. Es
+  fehlen Nullstellen.
 \end{enumerate}
 
 \paragraph{Lemma 7.44}
